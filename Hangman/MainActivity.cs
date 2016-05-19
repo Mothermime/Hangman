@@ -8,10 +8,10 @@ using Android.OS;
 
 namespace Hangman
 {
-    [Activity(Label = "Hangman", MainLauncher = true, Icon = "@drawable/icon")]
+    [Activity(Label = "Hangman", MainLauncher = true, Icon = "@drawable/icon", Theme = "@style/Theme.Custom")]
     public class MainActivity : Activity
     {
-        int count = 1;
+       
 
         protected override void OnCreate(Bundle bundle)
         {
@@ -22,9 +22,9 @@ namespace Hangman
 
             // Get our button from the layout resource,
             // and attach an event to it
-            Button button = FindViewById<Button>(Resource.Id.MyButton);
+           
 
-            button.Click += delegate { button.Text = string.Format("{0} clicks!", count++); };
+           
         }
     }
 }

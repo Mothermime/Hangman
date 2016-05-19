@@ -41,11 +41,96 @@ namespace Hangman
 			}
 		}
 		
+		public partial class Color
+		{
+			
+			// aapt resource value: 0x7f050000
+			public const int theme_devicedefault_background = 2131034112;
+			
+			// aapt resource value: 0x7f050001
+			public const int theme_devicedefault_light_background = 2131034113;
+			
+			static Color()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Color()
+			{
+			}
+		}
+		
 		public partial class Drawable
 		{
 			
 			// aapt resource value: 0x7f020000
-			public const int Icon = 2130837504;
+			public const int Blackboard1 = 2130837504;
+			
+			// aapt resource value: 0x7f020001
+			public const int Blackboard15 = 2130837505;
+			
+			// aapt resource value: 0x7f020002
+			public const int Blackboard16 = 2130837506;
+			
+			// aapt resource value: 0x7f020003
+			public const int Blackboard17 = 2130837507;
+			
+			// aapt resource value: 0x7f020004
+			public const int Blackboard18 = 2130837508;
+			
+			// aapt resource value: 0x7f020005
+			public const int Blackboard19 = 2130837509;
+			
+			// aapt resource value: 0x7f020006
+			public const int Blackboard2 = 2130837510;
+			
+			// aapt resource value: 0x7f020007
+			public const int Blackboard20 = 2130837511;
+			
+			// aapt resource value: 0x7f020008
+			public const int Blackboard21 = 2130837512;
+			
+			// aapt resource value: 0x7f020009
+			public const int Blackboard22 = 2130837513;
+			
+			// aapt resource value: 0x7f02000a
+			public const int Blackboard3 = 2130837514;
+			
+			// aapt resource value: 0x7f02000b
+			public const int Blackboard4 = 2130837515;
+			
+			// aapt resource value: 0x7f02000c
+			public const int Blackboard5 = 2130837516;
+			
+			// aapt resource value: 0x7f02000d
+			public const int Blackboard6 = 2130837517;
+			
+			// aapt resource value: 0x7f02000e
+			public const int HangmanTitle = 2130837518;
+			
+			// aapt resource value: 0x7f02000f
+			public const int Icon = 2130837519;
+			
+			// aapt resource value: 0x7f020010
+			public const int Stickman1a = 2130837520;
+			
+			// aapt resource value: 0x7f020011
+			public const int Stickman2a = 2130837521;
+			
+			// aapt resource value: 0x7f020012
+			public const int Stickman3a = 2130837522;
+			
+			// aapt resource value: 0x7f020013
+			public const int Stickman4a = 2130837523;
+			
+			// aapt resource value: 0x7f020014
+			public const int Stickman5a = 2130837524;
+			
+			// aapt resource value: 0x7f020015
+			public const int Stickman7b = 2130837525;
+			
+			// aapt resource value: 0x7f020016
+			public const int Stickman8 = 2130837526;
 			
 			static Drawable()
 			{
@@ -60,8 +145,74 @@ namespace Hangman
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f050000
-			public const int MyButton = 2131034112;
+			// aapt resource value: 0x7f070016
+			public const int btnPlay = 2131165206;
+			
+			// aapt resource value: 0x7f07000a
+			public const int btnPlayAgain = 2131165194;
+			
+			// aapt resource value: 0x7f070003
+			public const int button1 = 2131165187;
+			
+			// aapt resource value: 0x7f070005
+			public const int button2 = 2131165189;
+			
+			// aapt resource value: 0x7f070004
+			public const int button3 = 2131165188;
+			
+			// aapt resource value: 0x7f070006
+			public const int button4 = 2131165190;
+			
+			// aapt resource value: 0x7f070007
+			public const int button5 = 2131165191;
+			
+			// aapt resource value: 0x7f07000b
+			public const int ibtnBlue = 2131165195;
+			
+			// aapt resource value: 0x7f07000d
+			public const int ibtnGreen = 2131165197;
+			
+			// aapt resource value: 0x7f070011
+			public const int ibtnIndigo = 2131165201;
+			
+			// aapt resource value: 0x7f07000c
+			public const int ibtnPink = 2131165196;
+			
+			// aapt resource value: 0x7f07000f
+			public const int ibtnPurple = 2131165199;
+			
+			// aapt resource value: 0x7f07000e
+			public const int ibtnRed = 2131165198;
+			
+			// aapt resource value: 0x7f070010
+			public const int ibtnYellow = 2131165200;
+			
+			// aapt resource value: 0x7f070000
+			public const int imageView1 = 2131165184;
+			
+			// aapt resource value: 0x7f070015
+			public const int ivProfile = 2131165205;
+			
+			// aapt resource value: 0x7f070002
+			public const int linearLayout1 = 2131165186;
+			
+			// aapt resource value: 0x7f070008
+			public const int linearLayout2 = 2131165192;
+			
+			// aapt resource value: 0x7f070012
+			public const int linearLayout3 = 2131165202;
+			
+			// aapt resource value: 0x7f070009
+			public const int listView1 = 2131165193;
+			
+			// aapt resource value: 0x7f070001
+			public const int textView1 = 2131165185;
+			
+			// aapt resource value: 0x7f070013
+			public const int textView2 = 2131165203;
+			
+			// aapt resource value: 0x7f070014
+			public const int txtName = 2131165204;
 			
 			static Id()
 			{
@@ -78,6 +229,15 @@ namespace Hangman
 			
 			// aapt resource value: 0x7f030000
 			public const int Main = 2130903040;
+			
+			// aapt resource value: 0x7f030001
+			public const int Scores = 2130903041;
+			
+			// aapt resource value: 0x7f030002
+			public const int SetProfile = 2130903042;
+			
+			// aapt resource value: 0x7f030003
+			public const int StartPage = 2130903043;
 			
 			static Layout()
 			{
@@ -104,6 +264,28 @@ namespace Hangman
 			}
 			
 			private String()
+			{
+			}
+		}
+		
+		public partial class Style
+		{
+			
+			// aapt resource value: 0x7f060000
+			public const int Theme_Custom = 2131099648;
+			
+			// aapt resource value: 0x7f060001
+			public const int Theme_Custom1 = 2131099649;
+			
+			// aapt resource value: 0x7f060002
+			public const int Theme_Custom2 = 2131099650;
+			
+			static Style()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Style()
 			{
 			}
 		}

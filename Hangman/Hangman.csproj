@@ -49,14 +49,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include=".cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Scores.cs" />
+    <Compile Include="SetProfile.cs" />
+    <Compile Include="StartPage.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="GettingStarted.Xamarin" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
+    <AndroidResource Include="Resources\layout\SetProfile.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\StartPage.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\Scores.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Main.axml" />
@@ -69,6 +82,49 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\Blackboard1.png" />
+    <AndroidResource Include="Resources\drawable\Blackboard15.png" />
+    <AndroidResource Include="Resources\drawable\Blackboard16.png" />
+    <AndroidResource Include="Resources\drawable\Blackboard17.png" />
+    <AndroidResource Include="Resources\drawable\Blackboard18.png" />
+    <AndroidResource Include="Resources\drawable\Blackboard19.png" />
+    <AndroidResource Include="Resources\drawable\Blackboard2.png" />
+    <AndroidResource Include="Resources\drawable\Blackboard20.png" />
+    <AndroidResource Include="Resources\drawable\Blackboard21.png" />
+    <AndroidResource Include="Resources\drawable\Blackboard22.png" />
+    <AndroidResource Include="Resources\drawable\Blackboard3.png" />
+    <AndroidResource Include="Resources\drawable\Blackboard4.png" />
+    <AndroidResource Include="Resources\drawable\Blackboard5.png" />
+    <AndroidResource Include="Resources\drawable\Blackboard6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\HangmanTitle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\values\theme.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\Stickman7b.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\Stickman1a.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\Stickman2a.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\Stickman3a.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\Stickman4a.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\Stickman5a.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\Stickman8.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
