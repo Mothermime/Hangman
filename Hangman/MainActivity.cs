@@ -8,7 +8,7 @@ using Android.OS;
 
 namespace Hangman
 {
-    [Activity(Label = "Hangman", MainLauncher = true, Icon = "@drawable/icon", Theme = "@style/Theme.Custom")]
+    [Activity(Label = "Hangman", MainLauncher = false, Icon = "@drawable/icon", Theme = "@style/Theme.Custom")]
     public class MainActivity : Activity
     {
        

@@ -12,8 +12,10 @@
         android:text="Start"
         android:layout_width="272.0dp"
         android:layout_height="91.5dp"
-        android:id="@+id/button1"
-        android:layout_marginTop="60dp"
+        android:id="@+id/btnStart"
+        android:layout_marginTop="10dp"
         android:layout_gravity="center"
-        android:background="@android:color/holo_orange_light" />
+        android:background="@android:color/holo_orange_light"
+        android:textSize="30dp"
+        android:textAllCaps="false" />
 </LinearLayout>

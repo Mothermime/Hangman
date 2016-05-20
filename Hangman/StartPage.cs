@@ -21,6 +21,7 @@ namespace Hangman
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.StartPage);
             // Create your application here
+       btnStart = FindViewById<Button>(Resource.Id.btnStart);
           btnStart.Click += btnStart_Click;
         }
 

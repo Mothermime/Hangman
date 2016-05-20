@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:id="@+id/linearLayout4">
     <LinearLayout
         android:orientation="horizontal"
         android:minWidth="25px"
@@ -16,7 +17,8 @@
             android:layout_width="357.5dp"
             android:layout_height="match_parent"
             android:id="@+id/textView1"
-            android:layout_marginTop="50dp" />
+            android:layout_marginTop="50dp"
+            android:textColor="@android:color/primary_text_light" />
     </LinearLayout>
     <LinearLayout
         android:orientation="horizontal"
@@ -28,62 +30,63 @@
         android:layout_marginBottom="22.0dp"
         android:layout_margin="10dp">
         <ImageButton
-            android:src="@android:drawable/ic_menu_gallery"
-            android:layout_width="wrap_content"
+            android:layout_width="51.5dp"
             android:layout_height="match_parent"
             android:id="@+id/ibtnBlue"
             android:layout_weight="1"
             android:foreground="@drawable/stickman1a"
             android:layout_marginLeft="2dp"
-            android:layout_marginRight="2dp" />
+            android:layout_marginRight="2dp"
+            android:background="@drawable/stickman1a" />
         <ImageButton
-            android:src="@android:drawable/ic_menu_gallery"
             android:id="@+id/ibtnPink"
             android:clickable="true"
-            android:layout_width="wrap_content"
+            android:layout_width="51.5dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:foreground="@drawable/stickman2a"
-            android:layout_marginRight="2dp" />
+            android:layout_marginRight="2dp"
+            android:background="@drawable/stickman2a" />
         <ImageButton
-            android:src="@android:drawable/ic_menu_gallery"
-            android:layout_width="wrap_content"
+            android:layout_width="51.5dp"
             android:layout_height="match_parent"
             android:id="@+id/ibtnGreen"
             android:layout_weight="1"
             android:foreground="@drawable/stickman3a"
-            android:layout_marginRight="2dp" />
+            android:layout_marginRight="2dp"
+            android:background="@drawable/stickman3a" />
         <ImageButton
-            android:src="@android:drawable/ic_menu_gallery"
-            android:layout_width="wrap_content"
+            android:layout_width="51.5dp"
             android:layout_height="match_parent"
             android:id="@+id/ibtnRed"
             android:layout_weight="1"
             android:foreground="@drawable/stickman4a"
-            android:layout_marginRight="2dp" />
+            android:layout_marginRight="2dp"
+            android:background="@drawable/stickman4a" />
         <ImageButton
-            android:src="@android:drawable/ic_menu_gallery"
-            android:layout_width="wrap_content"
+            android:layout_width="51.5dp"
             android:layout_height="match_parent"
             android:id="@+id/ibtnPurple"
             android:layout_weight="1"
             android:foreground="@drawable/stickman5a"
-            android:layout_marginRight="2dp" />
+            android:layout_marginRight="2dp"
+            android:background="@drawable/stickman5a" />
         <ImageButton
-            android:src="@android:drawable/ic_menu_gallery"
-            android:layout_width="wrap_content"
+            android:layout_width="51.5dp"
             android:layout_height="match_parent"
             android:id="@+id/ibtnYellow"
             android:foreground="@drawable/stickman8"
-            android:layout_marginRight="2dp" />
+            android:layout_marginRight="2dp"
+            android:layout_weight="1"
+            android:background="@drawable/stickman8" />
         <ImageButton
-            android:src="@android:drawable/ic_menu_gallery"
             android:id="@+id/ibtnIndigo"
-            android:layout_width="wrap_content"
+            android:layout_width="51.5dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:foreground="@drawable/stickman7b"
-            android:layout_marginRight="2dp" />
+            android:layout_marginRight="2dp"
+            android:background="@drawable/stickman7b" />
     </LinearLayout>
     <LinearLayout
         android:orientation="horizontal"
@@ -92,7 +95,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/linearLayout3"
-        android:layout_marginTop="50dp">
+        android:layout_marginTop="20dp">
         <TextView
             android:text="Enter name"
             android:textAppearance="?android:attr/textAppearanceLarge"
@@ -100,14 +103,15 @@
             android:layout_height="match_parent"
             android:id="@+id/textView2" />
         <EditText
-            android:layout_width="217.5dp"
+            android:layout_width="147.5dp"
             android:layout_height="match_parent"
             android:id="@+id/txtName" />
         <ImageView
             android:src="@android:drawable/ic_menu_gallery"
             android:id="@+id/ivProfile"
-            android:layout_width="47.0dp"
-            android:layout_height="match_parent" />
+            android:layout_width="37.0dp"
+            android:layout_height="73.5dp"
+            android:background="@drawable/stickman1a" />
     </LinearLayout>
     <Button
         android:text="Play"
@@ -117,13 +121,7 @@
         android:layout_width="264.5dp"
         android:layout_height="84.5dp"
         android:layout_gravity="center"
-        android:layout_marginTop="60dp" />
-    <Button
-        android:text="New Player"
-        android:layout_width="264.0dp"
-        android:layout_height="81.5dp"
-        android:id="@+id/button1"
-        android:background="@android:color/holo_orange_light"
         android:layout_marginTop="10dp"
-        android:layout_gravity="center" />
+        android:textSize="30dp"
+        android:textAllCaps="false" />
 </LinearLayout>

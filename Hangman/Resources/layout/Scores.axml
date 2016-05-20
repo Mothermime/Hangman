@@ -18,7 +18,9 @@
         android:id="@+id/btnPlayAgain"
         android:background="@android:color/holo_orange_light"
         android:layout_gravity="center"
-        android:layout_marginBottom="0.0dp" />
+        android:layout_marginBottom="0.0dp"
+        android:textAllCaps="false"
+        android:textSize="30dp" />
     <Button
         android:text="New Player"
         android:id="@+id/button1"
@@ -27,5 +29,7 @@
         android:layout_height="92.5dp"
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
-        android:layout_marginBottom="0.0dp" />
+        android:layout_marginBottom="0.0dp"
+        android:textSize="30dp"
+        android:textAllCaps="false" />
 </LinearLayout>
