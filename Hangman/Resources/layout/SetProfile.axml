@@ -3,7 +3,8 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/linearLayout4">
+    android:id="@+id/linearLayout4"
+    android:theme="@style/Theme.Custom">
     <LinearLayout
         android:orientation="horizontal"
         android:minWidth="25px"
@@ -17,7 +18,7 @@
             android:layout_width="357.5dp"
             android:layout_height="match_parent"
             android:id="@+id/textView1"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="5dp"
             android:textColor="@android:color/primary_text_light" />
     </LinearLayout>
     <LinearLayout
@@ -37,7 +38,9 @@
             android:foreground="@drawable/stickman1a"
             android:layout_marginLeft="2dp"
             android:layout_marginRight="2dp"
-            android:background="@drawable/stickman1a" />
+            android:background="@drawable/stickman1a"
+            android:clickable="true"
+            android:tag="1" />
         <ImageButton
             android:id="@+id/ibtnPink"
             android:clickable="true"
@@ -46,7 +49,8 @@
             android:layout_weight="1"
             android:foreground="@drawable/stickman2a"
             android:layout_marginRight="2dp"
-            android:background="@drawable/stickman2a" />
+            android:background="@drawable/stickman2a"
+            android:tag="2" />
         <ImageButton
             android:layout_width="51.5dp"
             android:layout_height="match_parent"
@@ -54,7 +58,9 @@
             android:layout_weight="1"
             android:foreground="@drawable/stickman3a"
             android:layout_marginRight="2dp"
-            android:background="@drawable/stickman3a" />
+            android:background="@drawable/stickman3a"
+            android:clickable="true"
+            android:tag="3" />
         <ImageButton
             android:layout_width="51.5dp"
             android:layout_height="match_parent"
@@ -62,7 +68,9 @@
             android:layout_weight="1"
             android:foreground="@drawable/stickman4a"
             android:layout_marginRight="2dp"
-            android:background="@drawable/stickman4a" />
+            android:background="@drawable/stickman4a"
+            android:clickable="true"
+            android:tag="4" />
         <ImageButton
             android:layout_width="51.5dp"
             android:layout_height="match_parent"
@@ -70,7 +78,9 @@
             android:layout_weight="1"
             android:foreground="@drawable/stickman5a"
             android:layout_marginRight="2dp"
-            android:background="@drawable/stickman5a" />
+            android:background="@drawable/stickman5a"
+            android:clickable="true"
+            android:tag="5" />
         <ImageButton
             android:layout_width="51.5dp"
             android:layout_height="match_parent"
@@ -78,7 +88,9 @@
             android:foreground="@drawable/stickman8"
             android:layout_marginRight="2dp"
             android:layout_weight="1"
-            android:background="@drawable/stickman8" />
+            android:background="@drawable/stickman8"
+            android:clickable="true"
+            android:tag="6" />
         <ImageButton
             android:id="@+id/ibtnIndigo"
             android:layout_width="51.5dp"
@@ -86,7 +98,9 @@
             android:layout_weight="1"
             android:foreground="@drawable/stickman7b"
             android:layout_marginRight="2dp"
-            android:background="@drawable/stickman7b" />
+            android:background="@drawable/stickman7b"
+            android:clickable="true"
+            android:tag="7" />
     </LinearLayout>
     <LinearLayout
         android:orientation="horizontal"
@@ -104,14 +118,12 @@
             android:id="@+id/textView2" />
         <EditText
             android:layout_width="147.5dp"
-            android:layout_height="match_parent"
+            android:layout_height="48.5dp"
             android:id="@+id/txtName" />
         <ImageView
-            android:src="@android:drawable/ic_menu_gallery"
             android:id="@+id/ivProfile"
             android:layout_width="37.0dp"
-            android:layout_height="73.5dp"
-            android:background="@drawable/stickman1a" />
+            android:layout_height="50.5dp" />
     </LinearLayout>
     <Button
         android:text="Play"

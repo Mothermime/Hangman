@@ -15,6 +15,7 @@ namespace Hangman
     [Activity(Label = "Scores", Theme = "@style/Theme.Custom")]
     public class Scores : Activity
     {
+        private ListView lvScores;
         private Button btnPlayAgain;
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -31,5 +32,6 @@ namespace Hangman
         {
             StartActivity(typeof(MainActivity));
         }
+
     }
 }

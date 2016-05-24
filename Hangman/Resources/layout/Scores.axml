@@ -8,7 +8,7 @@
         android:minHeight="25px"
         android:layout_width="match_parent"
         android:layout_height="292.5dp"
-        android:id="@+id/listView1"
+        android:id="@+id/lvScores"
         android:layout_marginLeft="40dp"
         android:layout_marginRight="40dp" />
     <Button

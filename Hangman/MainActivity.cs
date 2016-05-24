@@ -26,6 +26,7 @@ namespace Hangman
 
            
         }
+        //scoring system start with 13, lose one point for every piece of gallows
     }
 }
 
