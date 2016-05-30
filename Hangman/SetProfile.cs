@@ -26,6 +26,7 @@ namespace Hangman
         private Button btnPlay;
         private ImageView ivProfile;
         private EditText txtName;
+   
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -55,7 +56,7 @@ namespace Hangman
             ibtnIndigo.Click += AllColors_Click;
 
         }
-
+       
         private void AllColors_Click(object sender, EventArgs e)
         {
            
@@ -66,7 +67,23 @@ namespace Hangman
 
         private void btnPlay_Click(object sender, EventArgs e)
         {
-           StartActivity(typeof(MainActivity));
+            if (txtName.Text != string.Empty && ivProfile.Drawable != null)
+            {
+                try
+                {
+                    // Result = Profiles.Insert
+
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+            }
+            {
+                Toast.MakeText(this, "Please enter your name and choose a picture.", ToastLength.Long).Show();
+            }
+            StartActivity(typeof(MainActivity));
         }
         public void SetProfileImage (string picId)
        //assign all the image ids to a single number to make it easier to use them 
@@ -121,12 +138,9 @@ namespace Hangman
         }
         public void SelectProfile()
         {
-            //if ()
-            //{
-                
-            //}
-            txtName.Text = "";
           
+
+
 
 
         }
