@@ -21,8 +21,8 @@ namespace Hangman
     public class MainActivity : Activity
     {
         //need to add 'using System' stuff to get this to work
-        List<string> WordList = new List<string>();
-      //  Dictionary<string, string> HangmanDic = new Dictionary<string, string>();
+        private List<string> WordList = new List<string>();
+        //  Dictionary<string, string> HangmanDic = new Dictionary<string, string>();
         private string tag = "aaaaa";
         private Button btnA;
         private Button btnB;
@@ -50,20 +50,29 @@ namespace Hangman
         private Button btnX;
         private Button btnY;
         private Button btnZ;
-      
+
 
         private ImageView IvHangman;
         private EditText txtWord;
         private char[] GameBlank;
         private char[] gameWord;
-        string word;
+
+        private string word;
         private string displayWord;
-      char letter ;
-       
-       
+        private char letter;
+
+
         private string[] solveword;
         //int LengthOfArray = wordsolve.Length;
-        private int[] GamePics = {Resource.Drawable.Blackboard1, Resource.Drawable.Blackboard2, Resource.Drawable.Blackboard3, Resource.Drawable.Blackboard4, Resource.Drawable.Blackboard5, Resource.Drawable.Blackboard6, Resource.Drawable.Blackboard22, Resource.Drawable.Blackboard21, Resource.Drawable.Blackboard20, Resource.Drawable.Blackboard19, Resource.Drawable.Blackboard18, Resource.Drawable.Blackboard17,Resource.Drawable.Blackboard16, Resource.Drawable.Blackboard15};
+        private int[] GamePics =
+        {
+            Resource.Drawable.Blackboard1, Resource.Drawable.Blackboard2,
+            Resource.Drawable.Blackboard3, Resource.Drawable.Blackboard4, Resource.Drawable.Blackboard5,
+            Resource.Drawable.Blackboard6, Resource.Drawable.Blackboard22, Resource.Drawable.Blackboard21,
+            Resource.Drawable.Blackboard20, Resource.Drawable.Blackboard19, Resource.Drawable.Blackboard18,
+            Resource.Drawable.Blackboard17, Resource.Drawable.Blackboard16, Resource.Drawable.Blackboard15
+        };
+
         private int wrongGuesses = 0;
 
         //public MainActivity(IntPtr javaReference, JniHandleOwnership transfer) : base(javaReference, transfer)
@@ -82,11 +91,12 @@ namespace Hangman
             LoadDic();
             CopyTheDB();
             GenerateWord();
-            DisplayWord();
+           
         }
 
         private void Initialize()
-        { // Set our view from the "main" layout resource
+        {
+            // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
             IvHangman = FindViewById<ImageView>(Resource.Id.ivHangman);
             txtWord = FindViewById<EditText>(Resource.Id.txtWord);
@@ -146,33 +156,45 @@ namespace Hangman
             btnZ.Click += OnButton_Click;
 
         }
-       
+
 
         public void OnButton_Click(object sender, EventArgs e)
         {
+//for each letter in the word does the button letter match the word letter if yes change screen if no draw gallows
             // no matter which button is pressed it will apply 
-           
+
             Button fakeButton = (Button) sender;
-           
-           if (fakeButton.Text == letter.ToString())//if the text on whichever button is pressed matches a letter in the word
-           {
-                InsertLetter();
-          
-           }
-            BuildGallows();
-             fakeButton.Enabled = false;
-           
+// txtWord.Text += fakeButton.Text;
+            letter = Convert.ToChar(fakeButton.Text.ToLower());
+            fakeButton.Enabled = false;
+             DisplayWord();
+           // InsertLetter();
         }
 
-        private void InsertLetter()
+        //if (fakeButton.Text == letter.ToString())
+        //    //if the text on whichever button is pressed matches a letter in the word
+        //{
+        //    InsertLetter();
+        //}
+
+        //else
+        //{ 
+        //BuildGallows();
+        //}
+        // 
+
+    
+
+private void InsertLetter()
+
         { for (int i = 0; i < GameBlank.Length; i++)
             {
                 if (letter == gameWord[i])
                 {
                     GameBlank[i] = letter;
-                   
+                    txtWord.Text += letter.ToString();
                 }
-            } DisplayWord();
+            }// DisplayWord();
   Log.Info(tag, "letter replacement");
         }
 
@@ -233,7 +255,7 @@ namespace Hangman
             try
             {
                 var assets = Assets;
-                using (var sr = new StreamReader(assets.Open("HangmanDic.txt")))
+                using (var sr = new StreamReader(assets.Open("LIstforHangman.txt")))
                 {
                     while (!sr.EndOfStream)
                     {
@@ -248,54 +270,44 @@ namespace Hangman
                 Toast.MakeText(this, "Database didn't load", ToastLength.Short).Show();
             }
         }
-
         private void GenerateWord()
-        {
+        {//Pick a random word to use in game
             Random rand = new Random();
             int RndNumber = rand.Next(1, WordList.Count);
-
-            Log.Info(tag, "RndNumber " + RndNumber);
             // return RndNumber;
-
+            Log.Info(tag, "RndNumber " + RndNumber);
+            //make a tag to help with debugging
             string Word = WordList[RndNumber];
-
+            //the word at whichever random number is picked
             gameWord = Word.ToCharArray();
+            //convert it to an array of letters
             GameBlank = new char[gameWord.Length];
+            //the same length as the word
             Log.Info(tag, "GenerateWord");
 
             for (int i = 0; i < GameBlank.Length; i++)
-            {
-                             GameBlank[i] = '_';
+            {  //loop through the chars in the word and convert them to underscores
+               GameBlank[i] = '_';
+                //show in text field
                txtWord.Text += "_ ";
-                    //              foreach (char letter in GameBlank)
-                    //              {
-                    //                  txtWord.Text += (letter +" " );
-                    //              }
-
-                    //          }
+                           
                     Log.Info(tag, "working here");
-
             }
-           
         }
-
         private string DisplayWord()
-        {
+        {//the series of dashes on screen
             for (int i = 0; i < GameBlank.Length; i++)
-            {
-
-
+            {//loop through the length of the word
                 if (letter == gameWord[i])
                 {
                     GameBlank[i] = letter;
                 }
-
-             //   GameBlank[i] = '_';
-                // DisplayWord();
-                //foreach (char letter in GameBlank)
-                //{
-                //    txtWord.Text += (letter + " ");
-                //}
+                
+                txtWord.Text = "";
+                foreach (char element in GameBlank)
+                {
+                    txtWord.Text += (element + " ");
+                }
 
             }
 
@@ -306,7 +318,7 @@ namespace Hangman
             //}
 
 
-          //  txtWord.Text = Convert.ToString(GameBlank);
+            //  txtWord.Text = Convert.ToString(GameBlank);
             //string displayword = word;
             //char[] gameWord = word.ToCharArray();
 
@@ -320,12 +332,6 @@ namespace Hangman
             return word;
       }
 
-        private void setupWordChoice()
-        {
-            wrongGuesses = 0;
-             IvHangman.SetBackgroundResource(GamePics[wrongGuesses]);
-
-        }
        
 
         //scoring system start with 13, lose one point for every piece of gallows
