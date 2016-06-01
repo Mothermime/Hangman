@@ -21,15 +21,10 @@
         android:layout_height="wrap_content"
         android:id="@+id/linearLayout2">
         <EditText
-            android:inputType="textPassword"
-            android:id="@+id/txtWord"
             android:layout_width="fill_parent"
             android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:text="Hangman"
-            android:textSize="@android:dimen/app_icon_size"
-            android:textStyle="bold"
-            android:theme="@style/Theme.Custom"
+            android:id="@+id/txtWord"
+            android:textSize="35dp"
             android:gravity="center" />
     </LinearLayout>
     <LinearLayout

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using Android.App;
 using Android.Content;
 using Android.Graphics.Drawables;
@@ -11,24 +12,17 @@ using Android.Widget;
 using Android.OS;
 using Android.Provider;
 using Android.Util;
+using Javax.Security.Auth;
 
 
 namespace Hangman
 {
-
-   
-
     [Activity(Label = "Hangman", MainLauncher = false, Icon = "@drawable/icon", Theme = "@style/Theme.Custom")]
     public class MainActivity : Activity
     {
-        //public void MainActivity()
-        //{
-        //}
-
-
         //need to add 'using System' stuff to get this to work
-        List<string> DictList = new List<string>();
-        Dictionary<string, string> DictOxford = new Dictionary<string, string>();
+        List<string> WordList = new List<string>();
+      //  Dictionary<string, string> HangmanDic = new Dictionary<string, string>();
         private string tag = "aaaaa";
         private Button btnA;
         private Button btnB;
@@ -60,39 +54,25 @@ namespace Hangman
 
         private ImageView IvHangman;
         private EditText txtWord;
-    
+        private char[] GameBlank;
+        private char[] gameWord;
+        string word;
+        private string displayWord;
+      char letter ;
        
-    //    string word = "Hangman";
-      
        
-        //string[] gamewords = {
-        //"active",
-        //"forum",
-        //"participation",
-        //"reward",
-        //"ratings"
-        //};
-       
-        //StringWord
-       
-        //ForI = ((((OT)))??? I = Word.Length
-        //
-        //fakebutton.Text = Word[]
-        //{
-        //displayWord[I] = Word[I]
-        // }
-        private string[] wordsolve;
-     
+        private string[] solveword;
+        //int LengthOfArray = wordsolve.Length;
         private int[] GamePics = {Resource.Drawable.Blackboard1, Resource.Drawable.Blackboard2, Resource.Drawable.Blackboard3, Resource.Drawable.Blackboard4, Resource.Drawable.Blackboard5, Resource.Drawable.Blackboard6, Resource.Drawable.Blackboard22, Resource.Drawable.Blackboard21, Resource.Drawable.Blackboard20, Resource.Drawable.Blackboard19, Resource.Drawable.Blackboard18, Resource.Drawable.Blackboard17,Resource.Drawable.Blackboard16, Resource.Drawable.Blackboard15};
         private int wrongGuesses = 0;
 
-        public MainActivity(IntPtr javaReference, JniHandleOwnership transfer) : base(javaReference, transfer)
-        {
-        }
+        //public MainActivity(IntPtr javaReference, JniHandleOwnership transfer) : base(javaReference, transfer)
+        //{
+        //}
 
-        public MainActivity()
-        {
-        }
+        //public MainActivity()
+        //{
+        //}
 
         protected override void OnCreate(Bundle bundle)
         {
@@ -100,8 +80,9 @@ namespace Hangman
             Log.Info(tag, "Started to generate tag");
             Initialize();
             LoadDic();
-          //  CopyTheDB();
- Random r = new Random();
+            CopyTheDB();
+            GenerateWord();
+            DisplayWord();
         }
 
         private void Initialize()
@@ -165,71 +146,72 @@ namespace Hangman
             btnZ.Click += OnButton_Click;
 
         }
-        private string SolvePuzzle(string word)
+       
+
+        public void OnButton_Click(object sender, EventArgs e)
         {
-            string solveWord = word;
-
-            char[] gameWord = word.ToCharArray();
-
-            return word;
+            // no matter which button is pressed it will apply 
+           
+            Button fakeButton = (Button) sender;
+           
+           if (fakeButton.Text == letter.ToString())//if the text on whichever button is pressed matches a letter in the word
+           {
+                InsertLetter();
+          
+           }
+            BuildGallows();
+             fakeButton.Enabled = false;
+           
         }
 
+        private void InsertLetter()
+        { for (int i = 0; i < GameBlank.Length; i++)
+            {
+                if (letter == gameWord[i])
+                {
+                    GameBlank[i] = letter;
+                   
+                }
+            } DisplayWord();
+  Log.Info(tag, "letter replacement");
+        }
 
-     public void OnButton_Click(object sender, EventArgs e)
-        {// no matter which button is pressed it will apply 
-
-            Button fakeButton = (Button)sender;
-          
-
-                wrongGuesses++;
+       
+        private void BuildGallows()
+        { 
+        wrongGuesses++;
             if (wrongGuesses < 13)
             {
                 //ivProfile.SetImageResource(Resource.Drawable.Stickman2a);
                 IvHangman.SetBackgroundResource(GamePics[wrongGuesses]);
-
             }
-           
-           
             
             else if (wrongGuesses == 13)
             {
                 IvHangman.SetBackgroundResource(GamePics[wrongGuesses]);
                 Toast.MakeText(this, "Game over", ToastLength.Long).Show();
                 }
-                
-             
-          
-            
-                
-                
-            
-
-
-        }
-
-        //private void guessClick(Object sender, EventArgs e)
-        //{
-
-        //}
+                }
 
         // Need to:
-        //build the engine of the game  i.e. make it work for one word!
-        //have database available
-        //get a list of words - dictionary
+
+        // ##build the engine of the game, make the gallows work
+        //make it work for one word!
+        //##have database available
+        //##get a list of words - dictionary
         //make a string array of gamewords and wordsolve,
         //randomly choose a word from the dictionary and place in txtWord
-        //split word into chars
+        //##split word into chars
         //replace letters if correctly guessed 
         //make buttons disappear once used
-        //replace images in image view for incorrect guesses
+        //##replace images in image view for incorrect guesses
         private void CopyTheDB()
         {
-            string dbName = "Profiles";
+            string dbName = "Profiles.sqlite";
             string dbPath = Path.Combine(Android.OS.Environment.ExternalStorageDirectory.ToString(), dbName);
             // Check if your DB has already been extracted. If the file does not exist move it
             if (!File.Exists(dbPath))
             {
-
                 using (BinaryReader br = new BinaryReader(Assets.Open(dbName)))
                 {
                     using (BinaryWriter bw = new BinaryWriter(new FileStream(dbPath, FileMode.Create)))
@@ -242,11 +224,7 @@ namespace Hangman
                         }
                     }
                 }
-                //       *Log.Info(tag, "DB Copied over");
-                //**/   }
-
-                //     Log.Info(tag, "DB Exists - Last log before Events");
-            }
+            } Log.Info(tag, "Db Loaded");
         }
 
         public void LoadDic()
@@ -255,77 +233,105 @@ namespace Hangman
             try
             {
                 var assets = Assets;
-                using (var sr = new StreamReader(assets.Open("OxfordDicWithDesc.txt")))
+                using (var sr = new StreamReader(assets.Open("HangmanDic.txt")))
                 {
-                    //while (!sr.EndOfStream)
-                    //{
-                    //    var text = sr.ReadLine();
-
-                    //    if (text != string.Empty && text.Length > 4) //ignore empty lines or words less than 4 letters
-                    //    {
-                    //        text = text.Trim();
-
-
-                    //        var definition = text.Remove(0, text.IndexOf(' ')); //get the def
-                    //        var word = text.Remove(text.IndexOf(' '));
-
-                    //        //cut out the stuff you don't want
-
-                    //        if (word.Contains("-"))
-                    //        {
-                    //            word = word.Replace("-", "");
-                    //        }
-                    //        if (word.Contains("1"))
-                    //        {
-                    //            word = word.Replace("1", "");
-                    //        }
-                    //        if (word.Contains("2"))
-                    //        {
-                    //            word = word.Replace("2", "");
-                    //        }
-                    // if (word.Contains("3"))
-                    //        {
-                    //            word = word.Replace("3", "");
-                    //        }
-                   // if (word.Contains("4"))
-                    //        {
-                    //            word = word.Replace("4", "");
-                    //        }
-                    //        if (definition.Contains("�"))
-                    //        {
-                    //            //� not working
-                    //            definition = definition.Replace("�", "");
-                    //        
-                      
-                    //        word = word.Trim();
-                    //        definition = definition.Trim(); //trim off spaces after got length of defn
-
-                        //        if (!DictOxford.ContainsKey(word) && word.Length > 3)
-                        //        {
-                        //            //if the word is not already there (apparently there is more than 1 and the word is longer than 4 letters)
-                        //            DictOxford.Add(word, definition); //load into dictonary
-                        //            DictList.Add(word); //add it to list                     
-                        //                                // count++; //count how many entries
-                        //        }
-                        //    }
-                        //}
+                    while (!sr.EndOfStream)
+                    {
+                          string text = sr.ReadLine();
+                    WordList.Add(text);
+                    }
                 }
                 Log.Info(tag, "Dictionary Loaded");
             }
             catch (Exception)
             {
-
                 Toast.MakeText(this, "Database didn't load", ToastLength.Short).Show();
             }
         }
 
         private void GenerateWord()
         {
-            Log.Info(tag, "GenerateWord");
             Random rand = new Random();
-            
+            int RndNumber = rand.Next(1, WordList.Count);
+
+            Log.Info(tag, "RndNumber " + RndNumber);
+            // return RndNumber;
+
+            string Word = WordList[RndNumber];
+
+            gameWord = Word.ToCharArray();
+            GameBlank = new char[gameWord.Length];
+            Log.Info(tag, "GenerateWord");
+
+            for (int i = 0; i < GameBlank.Length; i++)
+            {
+                             GameBlank[i] = '_';
+               txtWord.Text += "_ ";
+                    //              foreach (char letter in GameBlank)
+                    //              {
+                    //                  txtWord.Text += (letter +" " );
+                    //              }
+
+                    //          }
+                    Log.Info(tag, "working here");
+
+            }
+           
         }
+
+        private string DisplayWord()
+        {
+            for (int i = 0; i < GameBlank.Length; i++)
+            {
+
+
+                if (letter == gameWord[i])
+                {
+                    GameBlank[i] = letter;
+                }
+
+             //   GameBlank[i] = '_';
+                // DisplayWord();
+                //foreach (char letter in GameBlank)
+                //{
+                //    txtWord.Text += (letter + " ");
+                //}
+
+            }
+
+
+            //for (int i = 0; i < GameBlank.Length; i++)
+            //{
+            //    txtWord.Text += GameBlank[i];
+            //}
+
+
+          //  txtWord.Text = Convert.ToString(GameBlank);
+            //string displayword = word;
+            //char[] gameWord = word.ToCharArray();
+
+            //foreach (char letter in gameWord)
+            //{
+
+            //}
+
+
+
+            return word;
+      }
+
+        private void setupWordChoice()
+        {
+            wrongGuesses = 0;
+             IvHangman.SetBackgroundResource(GamePics[wrongGuesses]);
+
+        }
+       
+
         //scoring system start with 13, lose one point for every piece of gallows
+       
+       
+
     }
 }
 

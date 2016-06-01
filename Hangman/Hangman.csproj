@@ -67,7 +67,9 @@
     <Compile Include="StartPage.cs" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidAsset Include="Assets\Profiles.sqlite" />
+    <AndroidAsset Include="Assets\Profiles.sqlite">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
     <None Include="GettingStarted.Xamarin" />
     <None Include="packages.config" />
     <None Include="Resources\AboutResources.txt" />
@@ -145,6 +147,9 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\OxfordDicWithDesc.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\HangmanDic.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
