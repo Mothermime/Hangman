@@ -53,14 +53,14 @@ namespace Hangman
 
 
         private ImageView IvHangman;
-        private EditText txtWord;
+        private TextView tvWord;
         private char[] GameBlank;
         private char[] gameWord;
 
         private string word;
-        private string displayWord;
+        private string GameWord;
         private char letter;
-
+        private char guessedletter;
 
         private string[] solveword;
         //int LengthOfArray = wordsolve.Length;
@@ -91,7 +91,8 @@ namespace Hangman
             LoadDic();
             CopyTheDB();
             GenerateWord();
-           
+      
+
         }
 
         private void Initialize()
@@ -99,7 +100,7 @@ namespace Hangman
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
             IvHangman = FindViewById<ImageView>(Resource.Id.ivHangman);
-            txtWord = FindViewById<EditText>(Resource.Id.txtWord);
+         tvWord = FindViewById<TextView>(Resource.Id.tvWord);
             btnA = FindViewById<Button>(Resource.Id.btnA);
             btnB = FindViewById<Button>(Resource.Id.btnB);
             btnC = FindViewById<Button>(Resource.Id.btnC);
@@ -164,69 +165,72 @@ namespace Hangman
             // no matter which button is pressed it will apply 
 
             Button fakeButton = (Button) sender;
-// txtWord.Text += fakeButton.Text;
+
             letter = Convert.ToChar(fakeButton.Text.ToLower());
             fakeButton.Enabled = false;
-             DisplayWord();
-           // InsertLetter();
-        }
-
-        //if (fakeButton.Text == letter.ToString())
-        //    //if the text on whichever button is pressed matches a letter in the word
-        //{
-        //    InsertLetter();
-        //}
-
-        //else
-        //{ 
-        //BuildGallows();
-        //}
-        // 
-
-    
-
-private void InsertLetter()
-
-        { for (int i = 0; i < GameBlank.Length; i++)
+            DisplayWord();
+            Button choice = sender as Button;
+           //if  (WordList.Contains(choice.Text))
+           // {
+               
+           // }
+              if (!gameWord.Contains(letter))
             {
-                if (letter == gameWord[i])
-                {
-                    GameBlank[i] = letter;
-                    txtWord.Text += letter.ToString();
-                }
-            }// DisplayWord();
-  Log.Info(tag, "letter replacement");
+                BuildGallows();
+            }
+
+            // InsertLetter();
+            // Guesses();
+            //BuildGallows();
+            //if (fakeButton.Text == letter.ToString())
+            //    //    //if the text on whichever button is pressed matches a letter in the word
+            //{
+
+            //}
         }
 
+
+
+
+        //private void Guesses(object sender, EventArgs e)
+        //    {
+        //       Button choice = sender as Button;
+        //    if (!WordList.Contains(choice.Text))
+        //    {
+        //        BuildGallows();
+        //    }
+        //    }
+
+        //private bool Lettermatch(char guessedletter)
+        //{
+        //    int counter = 0;
+        //   foreach (char letter in gameWord)
+        //    { 
+        //        if (!gameWord.Contains(guessedletter)  )
+        //        {
+        //            return false;
+        //        }
+        //        counter++;
+        //    }
+        //}
        
         private void BuildGallows()
-        { 
-        wrongGuesses++;
+        {
+            wrongGuesses++;
             if (wrongGuesses < 13)
             {
-                //ivProfile.SetImageResource(Resource.Drawable.Stickman2a);
+               //display the different pictures in sequence for each successive wrong guess
                 IvHangman.SetBackgroundResource(GamePics[wrongGuesses]);
             }
             
             else if (wrongGuesses == 13)
-            {
+            {//put up the last picture and display a message to say the game is over
                 IvHangman.SetBackgroundResource(GamePics[wrongGuesses]);
                 Toast.MakeText(this, "Game over", ToastLength.Long).Show();
-                }
-                }
+            }
+        }
 
-        // Need to:
-
-        // ##build the engine of the game, make the gallows work
-        //make it work for one word!
-        //##have database available
-        //##get a list of words - dictionary
-        //make a string array of gamewords and wordsolve,
-        //randomly choose a word from the dictionary and place in txtWord
-        //##split word into chars
-        //replace letters if correctly guessed 
-        //make buttons disappear once used
-        //##replace images in image view for incorrect guesses
+      
         private void CopyTheDB()
         {
             string dbName = "Profiles.sqlite";
@@ -253,17 +257,19 @@ private void InsertLetter()
         {
             //need to tie the asset manager to these assets in this project This method can only run under the activity as it doesn't know what Assets is otherwise, this.Assets doesn't work. 
             try
-            {
+            {//get list from assets file and read it
                 var assets = Assets;
-                using (var sr = new StreamReader(assets.Open("LIstforHangman.txt")))
+                using (var sr = new StreamReader(assets.Open("EnglishWords.txt")))//make sure the .txt part of the file name is there or it doesn't work!!!
                 {
                     while (!sr.EndOfStream)
+                        //keep reading and adding as long as the end of the string hasn't been reached
                     {
                           string text = sr.ReadLine();
                     WordList.Add(text);
                     }
                 }
                 Log.Info(tag, "Dictionary Loaded");
+                //Yeeha, I've got this far!
             }
             catch (Exception)
             {
@@ -274,7 +280,7 @@ private void InsertLetter()
         {//Pick a random word to use in game
             Random rand = new Random();
             int RndNumber = rand.Next(1, WordList.Count);
-            // return RndNumber;
+            // return RndNumber between the first and however many letters there are in the list;
             Log.Info(tag, "RndNumber " + RndNumber);
             //make a tag to help with debugging
             string Word = WordList[RndNumber];
@@ -289,9 +295,10 @@ private void InsertLetter()
             {  //loop through the chars in the word and convert them to underscores
                GameBlank[i] = '_';
                 //show in text field
-               txtWord.Text += "_ ";
+               tvWord.Text += "_ ";
                            
-                    Log.Info(tag, "working here");
+                    Log.Info(tag, "Word loaded");
+                //show where I am up to on log
             }
         }
         private string DisplayWord()
@@ -299,38 +306,38 @@ private void InsertLetter()
             for (int i = 0; i < GameBlank.Length; i++)
             {//loop through the length of the word
                 if (letter == gameWord[i])
-                {
+                {//to see if the letter matches in the same place
                     GameBlank[i] = letter;
                 }
-                
-                txtWord.Text = "";
+                 //then put it in
+                tvWord.Text = "";
                 foreach (char element in GameBlank)
                 {
-                    txtWord.Text += (element + " ");
+                    tvWord.Text += (element + " ");
                 }
-
+               Log.Info(tag, "Word implemented");
+                //locked and loaded, ready to go
             }
+            //lots of attempts that didn't work!!!
+
+            ////for (int i = 0; i < GameBlank.Length; i++)
+            ////{
+            ////    txtWord.Text += GameBlank[i];
+            ////}
 
 
-            //for (int i = 0; i < GameBlank.Length; i++)
-            //{
-            //    txtWord.Text += GameBlank[i];
-            //}
+            ////  txtWord.Text = Convert.ToString(GameBlank);
+            ////string displayword = word;
+            ////char[] gameWord = word.ToCharArray();
 
+            ////foreach (char letter in gameWord)
+            ////{
 
-            //  txtWord.Text = Convert.ToString(GameBlank);
-            //string displayword = word;
-            //char[] gameWord = word.ToCharArray();
-
-            //foreach (char letter in gameWord)
-            //{
-
-            //}
-
-
-
+            ////}
             return word;
+            
       }
+
 
        
 

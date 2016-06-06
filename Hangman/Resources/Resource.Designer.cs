@@ -307,11 +307,11 @@ namespace Hangman
 			// aapt resource value: 0x7f070025
 			public const int tvTitle = 2131165221;
 			
+			// aapt resource value: 0x7f070002
+			public const int tvWord = 2131165186;
+			
 			// aapt resource value: 0x7f070033
 			public const int txtName = 2131165235;
-			
-			// aapt resource value: 0x7f070002
-			public const int txtWord = 2131165186;
 			
 			static Id()
 			{

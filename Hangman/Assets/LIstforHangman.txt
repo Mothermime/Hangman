@@ -185,7 +185,7 @@ abortus
 abound
 abounding
 about
-about(p)
+about
 about-face
 abouts
 above
@@ -478,7 +478,7 @@ accoucheuse
 account
 accountability
 accountable
-accountable(p)
+accountable
 accountableness
 accountancy
 accountant
@@ -688,7 +688,7 @@ acoustics
 acquaint
 acquaintance
 acquainted
-acquainted(p)
+acquainted
 acquaintenace
 acquaintend
 acquainting
@@ -781,7 +781,7 @@ actifed
 actin
 actinal
 acting
-acting(a)
+acting
 actinia
 actiniaria
 actinic
@@ -815,7 +815,7 @@ actions
 actitis
 actium
 activated
-activating(a)
+activating
 activation
 activator
 active
@@ -1059,7 +1059,7 @@ admit
 admittable
 admittance
 admitted
-admitted(a)
+admitted
 admitting
 admixture
 admlration
@@ -1097,7 +1097,7 @@ adoring
 adoringly
 adorn
 adorned
-adorned(p)
+adorned
 adornment
 adown
 adrenal
@@ -1111,7 +1111,7 @@ adrenosterone
 adrenotrophin
 adriatic
 adrift
-adrift(p)
+adrift
 adroit
 adroitly
 adroitness
@@ -1154,9 +1154,9 @@ adust
 adustion
 adv
 advance
-advance(a)
+advance
 advanced
-advanced(a)
+advanced
 advancement
 advances
 advancing
