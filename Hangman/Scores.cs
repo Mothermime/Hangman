@@ -9,6 +9,11 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using System.IO;
+using Android.Util;
+
+
+
 
 namespace Hangman
 {
@@ -16,6 +21,8 @@ namespace Hangman
     public class Scores : Activity
     {
         private ListView lvScores;
+        private List<Profiles> myList;
+        DatabaseManager myDbManager = new DatabaseManager();
         private Button btnPlayAgain;
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -23,7 +30,7 @@ namespace Hangman
 
             // Create your application here
             SetContentView(Resource.Layout.Scores);
-
+            lvScores = FindViewById<ListView>(Resource.Id.lvScores);
             btnPlayAgain = FindViewById<Button>(Resource.Id.btnPlayAgain);
             btnPlayAgain.Click += btnPlayAgain_Click;
         }

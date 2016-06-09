@@ -59,7 +59,6 @@ namespace Hangman
        
         private void AllColors_Click(object sender, EventArgs e)
         {
-           
             ImageButton fakeButton =  (ImageButton) sender;
 
             SetProfileImage((string) fakeButton.Tag);
@@ -67,24 +66,51 @@ namespace Hangman
 
         private void btnPlay_Click(object sender, EventArgs e)
         {
+            string Result = null;
             if (txtName.Text != string.Empty && ivProfile.Drawable != null)
             {
                 try
                 {
-                    // Result = Profiles.Insert
+                 //  Result = Profiles.Insert
 
                 }
                 catch (Exception)
                 {
-
-                    throw;
+Toast.MakeText(this, "Please enter your name and choose a picture.", ToastLength.Long).Show();
+                 
                 }
             }
             {
-                Toast.MakeText(this, "Please enter your name and choose a picture.", ToastLength.Long).Show();
+                 StartActivity(typeof(MainActivity));
             }
-            StartActivity(typeof(MainActivity));
+
         }
+        //private void btnAddOwner_Click(System.Object sender, System.EventArgs e)
+        //{
+        //    string result = null;
+        //    //hold the success or failure result
+        //    //only run if there is something in the textboxes
+        //    if ((txtFN.Text != string.Empty) && (txtLN.Text != string.Empty))
+        //    {
+        //        try
+        //        {
+        //            result = myDatabase.InsertOrUpdateOwner(txtFN.Text, txtLN.Text, TxtOwnerID.Text, "Add");
+        //            MessageBox.Show(txtFN.Text + " " + txtLN.Text + " Updating " + result);
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            MessageBox.Show(ex.Message);
+        //        }
+        //        //update the datagrid view to see new entries
+        //        DisplayDataGridViewOwner();
+        //        txtFN.Text = "";
+        //        txtLN.Text = "";
+        //    }
+        //    else
+        //    {
+        //        MessageBox.Show("Fill First Name and Surname fields");
+        //    }
+        //}
         public void SetProfileImage (string picId)
        //assign all the image ids to a single number to make it easier to use them 
         {

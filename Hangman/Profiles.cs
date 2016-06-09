@@ -15,13 +15,16 @@ using SQLite;
 
 namespace Hangman
 {
-   static class Profiles
+  public class Profiles
     {[PrimaryKey, AutoIncrement]
-    public static int Id{ get; set; }
-       public static string Name{ get; set; }
-       public static string ProfilePic { get; set; }
-       public static int Score { get; set; }
-       
-       public static string Wordmissed { get; set; }
+       public   int Id{ get; set; }
+       public string Name{ get; set; }
+       public string ProfilePic { get; set; }
+        public int Score { get; set; }
+        public string Word { get; set; }
+       public string Wordmissed { get; set; }
+        //public Profiles()
+        //{ }
+
     }
 }

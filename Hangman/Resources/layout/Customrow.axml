@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/relativeLayout1"
+    android:layoutDirection="ltr">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/sqlite_id"
+        android:visibility="gone" />
+    <ImageView
+        android:src="@android:drawable/ic_menu_gallery"
+        android:layout_width="37dp"
+        android:layout_height="50.5dp"
+        android:id="@+id/ivScoreProfile"
+        android:layout_alignParentLeft="true"
+        android:layout_marginRight="8dp" />
+    <TextView
+        android:text="Name"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/ivScoreProfile"
+        android:id="@+id/tvScoreName"
+        android:layout_alignBottom="@+id/ivScoreProfile" />
+    <TextView
+        android:text="Word"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/ScoreWord"
+        android:layout_centerHorizontal="true"
+        android:layout_alignBottom="@+id/ivScoreProfile" />
+    <TextView
+        android:text="130"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvScoreScore"
+        android:layout_alignParentRight="true"
+        android:layout_alignBottom="@+id/ivScoreProfile"
+        android:layout_marginRight="5dp" />
+    <TextView
+        android:text="Score"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView3"
+        android:layout_alignTop="@+id/ivScoreProfile"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="5dp" />
+</RelativeLayout>

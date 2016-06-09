@@ -58,6 +58,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include=".cs" />
+    <Compile Include="DataAdapter.cs" />
+    <Compile Include="DatabaseManager.cs" />
+    <Compile Include="IDataAdapter.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Profiles.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
@@ -81,6 +84,15 @@
       <SubType>AndroidResource</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\Scores.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\Customrow.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\EditProfile.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\AddProfile.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
   </ItemGroup>

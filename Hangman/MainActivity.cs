@@ -56,13 +56,14 @@ namespace Hangman
         private TextView tvWord;
         private char[] GameBlank;
         private char[] gameWord;
-
+        int counter = 130;
         private string word;
         private string GameWord;
         private char letter;
-        private char guessedletter;
+        Profiles myProfiles = new Profiles();
+       // private char guessedletter;
 
-        private string[] solveword;
+       // private string[] solveword;
         //int LengthOfArray = wordsolve.Length;
         private int[] GamePics =
         {
@@ -159,7 +160,7 @@ namespace Hangman
         }
 
 
-        public void OnButton_Click(object sender, EventArgs e)
+  public void OnButton_Click(object sender, EventArgs e)
         {
 //for each letter in the word does the button letter match the word letter if yes change screen if no draw gallows
             // no matter which button is pressed it will apply 
@@ -170,64 +171,48 @@ namespace Hangman
             fakeButton.Enabled = false;
             DisplayWord();
             Button choice = sender as Button;
-           //if  (WordList.Contains(choice.Text))
-           // {
-               
-           // }
+           if (!GameBlank.Contains('_'))
+            {
+             Toast.MakeText(this, "Well done!" +  " Score:" + counter , ToastLength.Long).Show();
+                StartActivity(typeof(Scores));
+            }
               if (!gameWord.Contains(letter))
             {
                 BuildGallows();
             }
-
-            // InsertLetter();
-            // Guesses();
-            //BuildGallows();
-            //if (fakeButton.Text == letter.ToString())
-            //    //    //if the text on whichever button is pressed matches a letter in the word
-            //{
-
-            //}
+             
         }
 
-
-
-
-        //private void Guesses(object sender, EventArgs e)
-        //    {
-        //       Button choice = sender as Button;
-        //    if (!WordList.Contains(choice.Text))
-        //    {
-        //        BuildGallows();
-        //    }
-        //    }
-
-        //private bool Lettermatch(char guessedletter)
+        //private void Score()
         //{
-        //    int counter = 0;
-        //   foreach (char letter in gameWord)
-        //    { 
-        //        if (!gameWord.Contains(guessedletter)  )
-        //        {
-        //            return false;
-        //        }
-        //        counter++;
-        //    }
+            
         //}
-       
         private void BuildGallows()
         {
+          
             wrongGuesses++;
+           
             if (wrongGuesses < 13)
             {
                //display the different pictures in sequence for each successive wrong guess
                 IvHangman.SetBackgroundResource(GamePics[wrongGuesses]);
+                counter = counter - 10;
             }
             
             else if (wrongGuesses == 13)
             {//put up the last picture and display a message to say the game is over
                 IvHangman.SetBackgroundResource(GamePics[wrongGuesses]);
-                Toast.MakeText(this, "Game over", ToastLength.Long).Show();
+                Toast.MakeText(this, "Game over.  " + "The word was . " + new string(gameWord) + "  Score: " + counter, ToastLength.Long).Show();
+                StartActivity(typeof(Scores));
+              counter = 0;
             }
+           
+            myProfiles.Score = counter;
+            
+            //for (int i = 13; i >= 0; i--)
+            //{
+           myProfiles.Score = counter;
+            // }
         }
 
       
@@ -303,37 +288,27 @@ namespace Hangman
         }
         private string DisplayWord()
         {//the series of dashes on screen
+            int counter = 0;
             for (int i = 0; i < GameBlank.Length; i++)
-            {//loop through the length of the word
+            {
+//loop through the length of the word
                 if (letter == gameWord[i])
-                {//to see if the letter matches in the same place
+                {
+//to see if the letter matches in the same place
                     GameBlank[i] = letter;
                 }
-                 //then put it in
+                //then put it in
                 tvWord.Text = "";
-                foreach (char element in GameBlank)
-                {
+            }
+            foreach (char element in GameBlank)
+                {//with a gap between letters!
                     tvWord.Text += (element + " ");
                 }
-               Log.Info(tag, "Word implemented");
+
+                Log.Info(tag, "Word implemented");
                 //locked and loaded, ready to go
-            }
-            //lots of attempts that didn't work!!!
-
-            ////for (int i = 0; i < GameBlank.Length; i++)
-            ////{
-            ////    txtWord.Text += GameBlank[i];
-            ////}
-
-
-            ////  txtWord.Text = Convert.ToString(GameBlank);
-            ////string displayword = word;
-            ////char[] gameWord = word.ToCharArray();
-
-            ////foreach (char letter in gameWord)
-            ////{
-
-            ////}
+            
+           // tvWord.Text = new string(GameBlank); 
             return word;
             
       }
@@ -341,7 +316,6 @@ namespace Hangman
 
        
 
-        //scoring system start with 13, lose one point for every piece of gallows
        
        
 
