@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 
 using Android.App;
@@ -8,6 +9,7 @@ using Android.Content;
 using Android.Graphics.Drawables;
 using Android.OS;
 using Android.Runtime;
+using Android.Util;
 using Android.Views;
 using Android.Widget;
 
@@ -25,13 +27,15 @@ namespace Hangman
         private ImageButton ibtnIndigo;
         private Button btnPlay;
         private ImageView ivProfile;
-        private EditText txtName;
-   
-
+       static EditText txtName;
+        private string tag = "aaaaa";
+        private int SelectedPicture;
+        public Profiles myProfiles = new Profiles() ;
+        DatabaseManager Db = new DatabaseManager();
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-
+           
             // Create your application here
             SetContentView(Resource.Layout.SetProfile);
             //again, set out which view will be used and tie all the components in
@@ -44,7 +48,9 @@ namespace Hangman
             ibtnIndigo = FindViewById<ImageButton>(Resource.Id.ibtnIndigo);
             btnPlay = FindViewById<Button>(Resource.Id.btnPlay);
             ivProfile = FindViewById<ImageView>(Resource.Id.ivProfile);
+         // ivProfile.Drawable = myProfiles.ProfilePic;
             txtName = FindViewById<EditText>(Resource.Id.txtName);
+            txtName.Text = myProfiles.Name; 
             btnPlay.Click += btnPlay_Click;
 
             ibtnBlue.Click += AllColors_Click;
@@ -60,108 +66,103 @@ namespace Hangman
         private void AllColors_Click(object sender, EventArgs e)
         {
             ImageButton fakeButton =  (ImageButton) sender;
+            ivProfile.SetImageResource(AddWordAndName.AssignProfilePic(fakeButton.Tag.ToString()));
+           
 
-            SetProfileImage((string) fakeButton.Tag);
+            //  SetProfileImage((string)fakeButton.Tag);
+
+            //var PainInTheNeck = (short) Convert.ToInt32(fakeButton.Tag);
+
+            // SelectedPicture = PainInTheNeck; // Convert.ToInt32(fakeButton.Tag);
+            // AddWordAndName.AssignProfilePic((string) fakeButton.Tag);
+          // SelectedPicture = (AddWordAndName.ProfilePic);
+           // myProfiles.ProfilePic = AddWordAndName.ProfilePic;
+
         }
 
         private void btnPlay_Click(object sender, EventArgs e)
         {
-            string Result = null;
-            if (txtName.Text != string.Empty && ivProfile.Drawable != null)
+            Log.Info(tag, "On btnPlayClick");
+            string Result;
+           
             {
-                try
+                if  (txtName.Text != "" && ivProfile.Drawable != null)
                 {
-                 //  Result = Profiles.Insert
+                    myProfiles.Name = txtName.Text;
+                    // AddWordAndName.ProfilePic = SelectedPicture;
+                   AddWordAndName.Name = myProfiles.Name;
+                    myProfiles.ProfilePic = AddWordAndName.ProfilePic;
+                   // myProfiles.Name = AddWordAndName.Name;
 
+                    Db.AddItem(AddWordAndName.Name, AddWordAndName.ProfilePic );
+
+                    StartActivity(typeof(MainActivity));
                 }
-                catch (Exception)
+                if (txtName.Text == "" || ivProfile.Drawable == null)
                 {
-Toast.MakeText(this, "Please enter your name and choose a picture.", ToastLength.Long).Show();
-                 
-                }
-            }
-            {
-                 StartActivity(typeof(MainActivity));
+                    Toast.MakeText(this, "Please enter your name and select a profile picture.", ToastLength.Long).Show();
+
+                    }
+
+                Log.Info(tag, "Profile added");
             }
 
         }
-        //private void btnAddOwner_Click(System.Object sender, System.EventArgs e)
+        //======================================================================== Old Code Below =============================
+        //public void SetProfileImage(string picId)
+        ////assign all the image ids to a single number to make it easier to use them 
         //{
-        //    string result = null;
-        //    //hold the success or failure result
-        //    //only run if there is something in the textboxes
-        //    if ((txtFN.Text != string.Empty) && (txtLN.Text != string.Empty))
+        //    SelectedPicture = Convert.ToInt16(picId);
+
+        //    switch (picId)
         //    {
-        //        try
-        //        {
-        //            result = myDatabase.InsertOrUpdateOwner(txtFN.Text, txtLN.Text, TxtOwnerID.Text, "Add");
-        //            MessageBox.Show(txtFN.Text + " " + txtLN.Text + " Updating " + result);
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            MessageBox.Show(ex.Message);
-        //        }
-        //        //update the datagrid view to see new entries
-        //        DisplayDataGridViewOwner();
-        //        txtFN.Text = "";
-        //        txtLN.Text = "";
+
+        //        case "1":
+        //            //stack overflow response to query of how to put an image into an image view
+        //            //I had tried ivProfile.Background = (Drawable)Resource.Id.ibtnBlue; and Drawable.Stickman1a (or something like that, both of which appeared good but neither worked!
+
+        //            ivProfile.SetImageResource(Resource.Drawable.Stickman1a);
+        //            break;
+
+        //        case "2":
+
+        //            ivProfile.SetImageResource(Resource.Drawable.Stickman2a);
+        //            break;
+
+        //        case "3":
+
+        //            ivProfile.SetImageResource(Resource.Drawable.Stickman3a);
+        //            break;
+
+        //        case "4":
+
+        //            ivProfile.SetImageResource(Resource.Drawable.Stickman4a);
+        //            break;
+
+        //        case "5":
+        //            ivProfile.SetImageResource(Resource.Drawable.Stickman5a);
+        //            break;
+
+        //        case "6":
+
+        //            ivProfile.SetImageResource(Resource.Drawable.Stickman8);
+        //            break;
+
+        //        case "7":
+
+        //            ivProfile.SetImageResource(Resource.Drawable.Stickman7b);
+        //            break;
+        //        //default view to identify there is an error
+        //        default:
+
+        //            Toast.MakeText(this, "Didn't work", ToastLength.Long).Show();
+        //            break;
         //    }
-        //    else
+
         //    {
-        //        MessageBox.Show("Fill First Name and Surname fields");
+
         //    }
         //}
-        public void SetProfileImage (string picId)
-       //assign all the image ids to a single number to make it easier to use them 
-        {
-            switch (picId)
-            {
-                case "1":
-                    //stack overflow response to query of how to put an image into an image view
-                    //I had tried ivProfile.Background = (Drawable)Resource.Id.ibtnBlue; and Drawable.Stickman1a (or something like that, both of which appeared good but neither worked!
-                    
-                    ivProfile.SetImageResource(Resource.Drawable.Stickman1a);
-                    break;
-
-                case "2":
-
-                    ivProfile.SetImageResource(Resource.Drawable.Stickman2a);
-                    break;
-
-                case "3":
-
-                   ivProfile.SetImageResource(Resource.Drawable.Stickman3a);
-                    break;
-
-                case "4":
-
-                    ivProfile.SetImageResource(Resource.Drawable.Stickman4a);
-                    break;
-
-                case "5":
-                    ivProfile.SetImageResource(Resource.Drawable.Stickman5a);
-                    break;
-
-                case "6":
-
-                    ivProfile.SetImageResource(Resource.Drawable.Stickman8);
-                    break;
-
-                case "7":
-
-                    ivProfile.SetImageResource(Resource.Drawable.Stickman7b);
-                    break;
-                    //default view to identify there is an error
-                default:
-
-                    Toast.MakeText(this, "Didn't work", ToastLength.Long).Show();
-                    break;
-            }
-
-{
-    
-}
-        }
         public void SelectProfile()
         {
           

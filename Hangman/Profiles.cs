@@ -19,12 +19,12 @@ namespace Hangman
     {[PrimaryKey, AutoIncrement]
        public   int Id{ get; set; }
        public string Name{ get; set; }
-       public string ProfilePic { get; set; }
+       public int ProfilePic { get; set; }
         public int Score { get; set; }
         public string Word { get; set; }
        public string Wordmissed { get; set; }
-        //public Profiles()
-        //{ }
+        public Profiles()
+        { }
 
     }
 }

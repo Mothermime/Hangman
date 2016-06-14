@@ -2,6 +2,44 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
+    android:layout_height="match_parent"
+    android:minWidth="25px"
+    android:minHeight="25px">
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtEditName" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="286.0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout1"
+        android:layout_gravity="center">
+        <Button
+            android:text="Edit name"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/btnUpdate"
+            android:layout_gravity="left"
+            android:layout_marginLeft="30dp"
+            android:layout_weight="1"
+            android:background="@android:color/holo_orange_light"
+            android:layout_marginRight="5dp" />
+        <Button
+            android:text="Delete"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/btnDelete"
+            android:layout_gravity="right"
+            android:layout_marginRight="30dp"
+            android:layout_weight="1"
+            android:background="@android:color/holo_orange_light"
+            android:layout_marginLeft="5dp" />
+    </LinearLayout>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText1" />
 </LinearLayout>

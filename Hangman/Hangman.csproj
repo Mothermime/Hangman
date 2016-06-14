@@ -58,8 +58,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include=".cs" />
+    <Compile Include="Add.cs" />
     <Compile Include="DataAdapter.cs" />
     <Compile Include="DatabaseManager.cs" />
+    <Compile Include="EditProfile.cs" />
     <Compile Include="IDataAdapter.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Profiles.cs" />

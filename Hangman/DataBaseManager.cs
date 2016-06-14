@@ -23,7 +23,8 @@ namespace Hangman
 
         public  DatabaseManager()
         {
-            DBConnect();           
+            DBConnect();
+            Log.Info(tag, "Db connected");
         }
 
         public List<Profiles> ViewAll()
@@ -32,7 +33,7 @@ namespace Hangman
             {
                 //SQLiteConnection db = new SQLiteConnection(System.IO.Path.Combine(Android.OS.Environment.ExternalStorageDirectory.ToString(), "Scoring.sqlite"));
 
-                return db.Query<Profiles>("select * from PlayerScores1");
+                return db.Query<Profiles>("select Id, ProfilePic, Name, Word, Score from Profiles order by Score Desc ");
             }
             catch (Exception e)
             {
@@ -41,32 +42,42 @@ namespace Hangman
             }
         }
 
-        private void DBConnect()
+       public void DBConnect()
         {
-            db =
+            try
+            {
+                db =
                 new SQLiteConnection(System.IO.Path.Combine(Android.OS.Environment.ExternalStorageDirectory.ToString(),
                     "Profiles.sqlite"));
+               
+
+
+            }
+            catch (Exception e)
+            {
+
+                Log.Info(tag, "ERROR Did the connection work??:" + e.Message);
+            }
+           
         }
 
-        public void AddItem()
+        public void AddItem(string Name, int ProfilePic)
         {
-
-           
-            Log.Info(tag, "AddItem Name = " + myProfiles.Name +" AddItem Score = " + myProfiles.Score + " AddItem Word = " + myProfiles.Word);
+            Log.Info(tag, "AddItem Name = " + Name  + " AddItem ProfilePic = " + ProfilePic);
 
             try
             {
                 var AddThis = new Profiles
                 {
-                 Name = myProfiles.Name,
-                   Score = myProfiles.Score,
-                   Word = myProfiles.Word,
-                   ProfilePic = myProfiles.ProfilePic
+                 Name = Name,
+                 //Score = Score,
+                 //Word = myProfiles.Word,
+                 ProfilePic = ProfilePic
                 };
 
                 db.Insert(AddThis);
 
-                //   db.Execute("INSERT INTO Profiles(name, score, word) VALUES(?1,? 2,? 3))
+              // db.Execute("INSERT INTO Profiles(ProfilePic, Name, Word, Score)// VALUES(?1,? 2,? 3))
                 Log.Info(tag, "Data Added " + AddThis);
 
             }
@@ -76,19 +87,23 @@ namespace Hangman
             }
         }
 
-        public void EditItem(string name, int score, string word, int id)
+        public void EditItem( string name,  int id)
         {
             try
             {
                 //http://stackoverflow.com/questions/14007891/how-are-sqlite-records-updated
 
 
+                int profilePic = 0;
                 var EditThis = new Profiles
                 {
                     Id = id,
+                   
                     Name = name,
-                   Score = score,
-                   Word = word
+                    //Score = score,
+                    //Word = word,
+                    ProfilePic = profilePic,
+                   
                 };
 
                 db.Update(EditThis);
@@ -117,10 +132,40 @@ namespace Hangman
             {
                 Log.Info(tag, "Delete Error:" + ex.Message);
             }
+           
         }
 
+       public void addScore( int Score, string Word, String Name, int ProfilePic)
+       {
+            Log.Info(tag, " AddItem Score = " + Score, "AddItem Word = " + Word);
+
+            try
+            {
+                var AddScore = new Profiles
+                {
+                //Id =Id,
+                 Score = Score,
+                 Word = Word,
+                 Name = Name,
+                 ProfilePic = ProfilePic,
+                
+                };
+
+                db.Insert(AddScore);
+
+              // db.Execute("INSERT INTO Profiles(ProfilePic, Name, Word, Score)// VALUES(?1,? 2,? 3))
+                Log.Info(tag, "Score Added " + AddScore);
+
+            }
+            catch (Exception e)
+            {
+                Log.Info(tag, "Add Error:  " + e.Message);
+            }
+        }
+       }
+
     }
-}
+
 
 
     

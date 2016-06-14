@@ -9,6 +9,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System;
+
 [assembly: global::Android.Runtime.ResourceDesignerAttribute("Hangman.Resource", IsApplication=true)]
 
 namespace Hangman
@@ -141,165 +143,179 @@ namespace Hangman
 			{
 			}
 		}
-		
-		public partial class Id
+
+        public static explicit operator Resource(int v)
+        {
+            throw new NotImplementedException();
+        }
+
+        public partial class Id
 		{
 			
 			// aapt resource value: 0x7f070004
 			public const int ScoreWord = 2131165188;
 			
-			// aapt resource value: 0x7f07000b
-			public const int btnA = 2131165195;
-			
-			// aapt resource value: 0x7f07000c
-			public const int btnB = 2131165196;
-			
-			// aapt resource value: 0x7f07000d
-			public const int btnC = 2131165197;
-			
-			// aapt resource value: 0x7f07000e
-			public const int btnD = 2131165198;
-			
-			// aapt resource value: 0x7f07000f
-			public const int btnE = 2131165199;
-			
 			// aapt resource value: 0x7f070010
-			public const int btnF = 2131165200;
+			public const int btnA = 2131165200;
 			
 			// aapt resource value: 0x7f070011
-			public const int btnG = 2131165201;
+			public const int btnB = 2131165201;
+			
+			// aapt resource value: 0x7f070012
+			public const int btnC = 2131165202;
 			
 			// aapt resource value: 0x7f070013
-			public const int btnH = 2131165203;
+			public const int btnD = 2131165203;
+			
+			// aapt resource value: 0x7f07000a
+			public const int btnDelete = 2131165194;
 			
 			// aapt resource value: 0x7f070014
-			public const int btnI = 2131165204;
+			public const int btnE = 2131165204;
 			
 			// aapt resource value: 0x7f070015
-			public const int btnJ = 2131165205;
+			public const int btnF = 2131165205;
 			
 			// aapt resource value: 0x7f070016
-			public const int btnK = 2131165206;
-			
-			// aapt resource value: 0x7f070017
-			public const int btnL = 2131165207;
+			public const int btnG = 2131165206;
 			
 			// aapt resource value: 0x7f070018
-			public const int btnM = 2131165208;
+			public const int btnH = 2131165208;
+			
+			// aapt resource value: 0x7f070019
+			public const int btnI = 2131165209;
 			
 			// aapt resource value: 0x7f07001a
-			public const int btnN = 2131165210;
+			public const int btnJ = 2131165210;
 			
 			// aapt resource value: 0x7f07001b
-			public const int btnO = 2131165211;
+			public const int btnK = 2131165211;
 			
 			// aapt resource value: 0x7f07001c
-			public const int btnP = 2131165212;
-			
-			// aapt resource value: 0x7f07003a
-			public const int btnPlay = 2131165242;
-			
-			// aapt resource value: 0x7f07002a
-			public const int btnPlayAgain = 2131165226;
+			public const int btnL = 2131165212;
 			
 			// aapt resource value: 0x7f07001d
-			public const int btnQ = 2131165213;
-			
-			// aapt resource value: 0x7f07001e
-			public const int btnR = 2131165214;
+			public const int btnM = 2131165213;
 			
 			// aapt resource value: 0x7f07001f
-			public const int btnS = 2131165215;
-			
-			// aapt resource value: 0x7f07003c
-			public const int btnStart = 2131165244;
+			public const int btnN = 2131165215;
 			
 			// aapt resource value: 0x7f070020
-			public const int btnT = 2131165216;
+			public const int btnO = 2131165216;
+			
+			// aapt resource value: 0x7f070021
+			public const int btnP = 2131165217;
+			
+			// aapt resource value: 0x7f07003e
+			public const int btnPlay = 2131165246;
+			
+			// aapt resource value: 0x7f07002e
+			public const int btnPlayAgain = 2131165230;
 			
 			// aapt resource value: 0x7f070022
-			public const int btnU = 2131165218;
+			public const int btnQ = 2131165218;
 			
 			// aapt resource value: 0x7f070023
-			public const int btnV = 2131165219;
+			public const int btnR = 2131165219;
 			
 			// aapt resource value: 0x7f070024
-			public const int btnW = 2131165220;
+			public const int btnS = 2131165220;
+			
+			// aapt resource value: 0x7f070040
+			public const int btnStart = 2131165248;
 			
 			// aapt resource value: 0x7f070025
-			public const int btnX = 2131165221;
-			
-			// aapt resource value: 0x7f070026
-			public const int btnY = 2131165222;
+			public const int btnT = 2131165221;
 			
 			// aapt resource value: 0x7f070027
-			public const int btnZ = 2131165223;
+			public const int btnU = 2131165223;
+			
+			// aapt resource value: 0x7f070009
+			public const int btnUpdate = 2131165193;
+			
+			// aapt resource value: 0x7f070028
+			public const int btnV = 2131165224;
+			
+			// aapt resource value: 0x7f070029
+			public const int btnW = 2131165225;
+			
+			// aapt resource value: 0x7f07002a
+			public const int btnX = 2131165226;
+			
+			// aapt resource value: 0x7f07002b
+			public const int btnY = 2131165227;
 			
 			// aapt resource value: 0x7f07002c
-			public const int button1 = 2131165228;
+			public const int btnZ = 2131165228;
 			
 			// aapt resource value: 0x7f07002f
-			public const int ibtnBlue = 2131165231;
+			public const int button1 = 2131165231;
 			
-			// aapt resource value: 0x7f070031
-			public const int ibtnGreen = 2131165233;
-			
-			// aapt resource value: 0x7f070035
-			public const int ibtnIndigo = 2131165237;
-			
-			// aapt resource value: 0x7f070030
-			public const int ibtnPink = 2131165232;
+			// aapt resource value: 0x7f07000b
+			public const int editText1 = 2131165195;
 			
 			// aapt resource value: 0x7f070033
-			public const int ibtnPurple = 2131165235;
+			public const int ibtnBlue = 2131165235;
 			
-			// aapt resource value: 0x7f070032
-			public const int ibtnRed = 2131165234;
-			
-			// aapt resource value: 0x7f070034
-			public const int ibtnYellow = 2131165236;
-			
-			// aapt resource value: 0x7f07003b
-			public const int imageView1 = 2131165243;
-			
-			// aapt resource value: 0x7f070007
-			public const int ivHangman = 2131165191;
+			// aapt resource value: 0x7f070035
+			public const int ibtnGreen = 2131165237;
 			
 			// aapt resource value: 0x7f070039
-			public const int ivProfile = 2131165241;
+			public const int ibtnIndigo = 2131165241;
+			
+			// aapt resource value: 0x7f070034
+			public const int ibtnPink = 2131165236;
+			
+			// aapt resource value: 0x7f070037
+			public const int ibtnPurple = 2131165239;
+			
+			// aapt resource value: 0x7f070036
+			public const int ibtnRed = 2131165238;
+			
+			// aapt resource value: 0x7f070038
+			public const int ibtnYellow = 2131165240;
+			
+			// aapt resource value: 0x7f07003f
+			public const int imageView1 = 2131165247;
+			
+			// aapt resource value: 0x7f07000c
+			public const int ivHangman = 2131165196;
+			
+			// aapt resource value: 0x7f07003d
+			public const int ivProfile = 2131165245;
 			
 			// aapt resource value: 0x7f070002
 			public const int ivScoreProfile = 2131165186;
 			
-			// aapt resource value: 0x7f070028
-			public const int linearLayout1 = 2131165224;
-			
 			// aapt resource value: 0x7f070008
-			public const int linearLayout2 = 2131165192;
+			public const int linearLayout1 = 2131165192;
 			
-			// aapt resource value: 0x7f070036
-			public const int linearLayout3 = 2131165238;
+			// aapt resource value: 0x7f07000d
+			public const int linearLayout2 = 2131165197;
+			
+			// aapt resource value: 0x7f07003a
+			public const int linearLayout3 = 2131165242;
+			
+			// aapt resource value: 0x7f070031
+			public const int linearLayout4 = 2131165233;
+			
+			// aapt resource value: 0x7f07000f
+			public const int llA = 2131165199;
+			
+			// aapt resource value: 0x7f070017
+			public const int llH = 2131165207;
+			
+			// aapt resource value: 0x7f07001e
+			public const int llN = 2131165214;
+			
+			// aapt resource value: 0x7f070026
+			public const int llU = 2131165222;
 			
 			// aapt resource value: 0x7f07002d
-			public const int linearLayout4 = 2131165229;
+			public const int llY = 2131165229;
 			
-			// aapt resource value: 0x7f07000a
-			public const int llA = 2131165194;
-			
-			// aapt resource value: 0x7f070012
-			public const int llH = 2131165202;
-			
-			// aapt resource value: 0x7f070019
-			public const int llN = 2131165209;
-			
-			// aapt resource value: 0x7f070021
-			public const int llU = 2131165217;
-			
-			// aapt resource value: 0x7f070029
-			public const int llY = 2131165225;
-			
-			// aapt resource value: 0x7f07002b
-			public const int lvScores = 2131165227;
+			// aapt resource value: 0x7f070030
+			public const int lvScores = 2131165232;
 			
 			// aapt resource value: 0x7f070000
 			public const int relativeLayout1 = 2131165184;
@@ -307,11 +323,11 @@ namespace Hangman
 			// aapt resource value: 0x7f070001
 			public const int sqlite_id = 2131165185;
 			
-			// aapt resource value: 0x7f07002e
-			public const int textView1 = 2131165230;
+			// aapt resource value: 0x7f070032
+			public const int textView1 = 2131165234;
 			
-			// aapt resource value: 0x7f070037
-			public const int textView2 = 2131165239;
+			// aapt resource value: 0x7f07003b
+			public const int textView2 = 2131165243;
 			
 			// aapt resource value: 0x7f070006
 			public const int textView3 = 2131165190;
@@ -322,11 +338,14 @@ namespace Hangman
 			// aapt resource value: 0x7f070005
 			public const int tvScoreScore = 2131165189;
 			
-			// aapt resource value: 0x7f070009
-			public const int tvWord = 2131165193;
+			// aapt resource value: 0x7f07000e
+			public const int tvWord = 2131165198;
 			
-			// aapt resource value: 0x7f070038
-			public const int txtName = 2131165240;
+			// aapt resource value: 0x7f070007
+			public const int txtEditName = 2131165191;
+			
+			// aapt resource value: 0x7f07003c
+			public const int txtName = 2131165244;
 			
 			static Id()
 			{

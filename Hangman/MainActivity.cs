@@ -60,10 +60,13 @@ namespace Hangman
         private string word;
         private string GameWord;
         private char letter;
+        private int Id;
         Profiles myProfiles = new Profiles();
-       // private char guessedletter;
+        DatabaseManager objDb = new DatabaseManager();
+        SetProfile mySetProfile = new SetProfile();
+        // private char guessedletter;
 
-       // private string[] solveword;
+        // private string[] solveword;
         //int LengthOfArray = wordsolve.Length;
         private int[] GamePics =
         {
@@ -76,13 +79,7 @@ namespace Hangman
 
         private int wrongGuesses = 0;
 
-        //public MainActivity(IntPtr javaReference, JniHandleOwnership transfer) : base(javaReference, transfer)
-        //{
-        //}
-
-        //public MainActivity()
-        //{
-        //}
+     
 
         protected override void OnCreate(Bundle bundle)
         {
@@ -174,6 +171,14 @@ namespace Hangman
            if (!GameBlank.Contains('_'))
             {
              Toast.MakeText(this, "Well done!" +  " Score:" + counter , ToastLength.Long).Show();
+               // myProfiles.Score = counter;
+                string Word = tvWord.Text;
+                //myProfiles.Word = Word;
+                
+                //didn't need  a 'do while' loop because it was only one word not a sentence (sigh)
+                    Word = Word.Replace(" ", "");
+
+           objDb.addScore( counter, Word, AddWordAndName.Name, AddWordAndName.ProfilePic);
                 StartActivity(typeof(Scores));
             }
               if (!gameWord.Contains(letter))
@@ -183,13 +188,9 @@ namespace Hangman
              
         }
 
-        //private void Score()
-        //{
-            
-        //}
+       
         private void BuildGallows()
         {
-          
             wrongGuesses++;
            
             if (wrongGuesses < 13)
@@ -202,16 +203,17 @@ namespace Hangman
             else if (wrongGuesses == 13)
             {//put up the last picture and display a message to say the game is over
                 IvHangman.SetBackgroundResource(GamePics[wrongGuesses]);
-                Toast.MakeText(this, "Game over.  " + "The word was . " + new string(gameWord) + "  Score: " + counter, ToastLength.Long).Show();
+                counter = 0;
+                Toast.MakeText(this, "Game over.  " + "The word was  " + new string(gameWord) + ".  Score: " + counter, ToastLength.Long).Show();
                 StartActivity(typeof(Scores));
-              counter = 0;
+              
             }
            
             myProfiles.Score = counter;
             
             //for (int i = 13; i >= 0; i--)
             //{
-           myProfiles.Score = counter;
+          // myProfiles.Score = counter;
             // }
         }
 
@@ -235,7 +237,9 @@ namespace Hangman
                         }
                     }
                 }
-            } Log.Info(tag, "Db Loaded");
+
+            }
+            Log.Info(tag, "Db Loaded");
         }
 
         public void LoadDic()
@@ -286,8 +290,10 @@ namespace Hangman
                 //show where I am up to on log
             }
         }
+
         private string DisplayWord()
-        {//the series of dashes on screen
+        {
+//the series of dashes on screen
             int counter = 0;
             for (int i = 0; i < GameBlank.Length; i++)
             {
@@ -301,23 +307,25 @@ namespace Hangman
                 tvWord.Text = "";
             }
             foreach (char element in GameBlank)
-                {//with a gap between letters!
-                    tvWord.Text += (element + " ");
-                }
+            {
+//with a gap between letters!
+                tvWord.Text += (element + " ");
+            }
 
-                Log.Info(tag, "Word implemented");
-                //locked and loaded, ready to go
-            
-           // tvWord.Text = new string(GameBlank); 
+            Log.Info(tag, "Word implemented");
+            //locked and loaded, ready to go
+
+            // tvWord.Text = new string(GameBlank); 
             return word;
-            
-      }
 
-
+        }
        
 
-       
-       
+
+
+
+
+
 
     }
 }
