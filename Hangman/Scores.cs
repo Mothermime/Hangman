@@ -70,45 +70,16 @@ namespace Hangman
            
             edititem.PutExtra("name", ScoreItem.Name);
             edititem.PutExtra("Id", ScoreItem.Id);
-
-
-               StartActivity(edititem);
+            edititem.PutExtra("ProfilePic", ScoreItem.ProfilePic);
+            //Need to add all fields  even though only the ones above are being edited or they don't show up on the edited entry.
+            edititem.PutExtra("Word", ScoreItem.Word);
+            edititem.PutExtra("Score", ScoreItem.Score);
+            StartActivity(edititem);
 
         }
 
-        private void btnUpdate_Click(object sender, EventArgs e)
-        {
-          
-            try
-            {
-                adjDb.EditItem( tvScoreName.Text, Listid);
-                Toast.MakeText(this, "Name edited", ToastLength.Short).Show();
-                //this.Finish();
-                //StartActivity(typeof(MainActivity));
-            }
-            catch (Exception ex)
-            {
-                Toast.MakeText(this, "Error editing", ToastLength.Short).Show();
-            }
-        }
- private void btnDelete_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                adjDb.DeleteItem( Listid);
-                Toast.MakeText(this, "Player deleted", ToastLength.Short).Show();
-                //this.Finish();
-                //StartActivity(typeof(MainActivity));
-            }
-            catch (Exception ex)
-            {
-                Toast.MakeText(this, "Error editing", ToastLength.Short).Show();
-            }
-        }
-        private void btnPlayAgain_Click(object sender, EventArgs e)
-        {
-            StartActivity(typeof(MainActivity));
-        }
+
+ 
 
     }
 }

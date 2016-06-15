@@ -61,7 +61,7 @@ namespace Hangman
            
         }
 
-        public void AddItem(string Name, int ProfilePic)
+        public void AddItem( string Name, int ProfilePic)
         {
             Log.Info(tag, "AddItem Name = " + Name  + " AddItem ProfilePic = " + ProfilePic);
 
@@ -69,6 +69,7 @@ namespace Hangman
             {
                 var AddThis = new Profiles
                 {
+                    
                  Name = Name,
                  //Score = Score,
                  //Word = myProfiles.Word,
@@ -87,22 +88,25 @@ namespace Hangman
             }
         }
 
-        public void EditItem( string name,  int id)
+      public void EditItem( string Name, string Word, int Score, int Id, int ProfilePic)
+           // public void EditItem(string Name,  int Id, int ProfilePic)
         {
+
+            Log.Info(tag, "EditProfile Name = " + Name);
             try
             {
                 //http://stackoverflow.com/questions/14007891/how-are-sqlite-records-updated
 
 
-                int profilePic = 0;
+              //  int profilePic = 0;
                 var EditThis = new Profiles
                 {
-                    Id = id,
+                    Id = Id,
                    
-                    Name = name,
-                    //Score = score,
-                    //Word = word,
-                    ProfilePic = profilePic,
+                    Name = Name,
+                    Score = Score,
+                    Word = Word,
+                    ProfilePic =  ProfilePic,
                    
                 };
 

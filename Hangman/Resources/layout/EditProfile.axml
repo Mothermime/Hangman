@@ -42,4 +42,90 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/editText1" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="83.0dp"
+        android:id="@+id/linearLayout1"
+        android:layout_marginBottom="22.0dp"
+        android:layout_margin="10dp">
+        <ImageButton
+            android:layout_width="51.5dp"
+            android:layout_height="match_parent"
+            android:id="@+id/ibtnBlue"
+            android:layout_weight="1"
+            android:foreground="@drawable/stickman1a"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:background="@drawable/stickman1a"
+            android:clickable="true"
+            android:tag="1" />
+        <ImageButton
+            android:id="@+id/ibtnPink"
+            android:clickable="true"
+            android:layout_width="51.5dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:foreground="@drawable/stickman2a"
+            android:layout_marginRight="2dp"
+            android:background="@drawable/stickman2a"
+            android:tag="2" />
+        <ImageButton
+            android:layout_width="51.5dp"
+            android:layout_height="match_parent"
+            android:id="@+id/ibtnGreen"
+            android:layout_weight="1"
+            android:foreground="@drawable/stickman3a"
+            android:layout_marginRight="2dp"
+            android:background="@drawable/stickman3a"
+            android:clickable="true"
+            android:tag="3" />
+        <ImageButton
+            android:layout_width="51.5dp"
+            android:layout_height="match_parent"
+            android:id="@+id/ibtnRed"
+            android:layout_weight="1"
+            android:foreground="@drawable/stickman4a"
+            android:layout_marginRight="2dp"
+            android:background="@drawable/stickman4a"
+            android:clickable="true"
+            android:tag="4" />
+        <ImageButton
+            android:layout_width="51.5dp"
+            android:layout_height="match_parent"
+            android:id="@+id/ibtnPurple"
+            android:layout_weight="1"
+            android:foreground="@drawable/stickman5a"
+            android:layout_marginRight="2dp"
+            android:background="@drawable/stickman5a"
+            android:clickable="true"
+            android:tag="5" />
+        <ImageButton
+            android:layout_width="51.5dp"
+            android:layout_height="match_parent"
+            android:id="@+id/ibtnYellow"
+            android:foreground="@drawable/stickman8"
+            android:layout_marginRight="2dp"
+            android:layout_weight="1"
+            android:background="@drawable/stickman8"
+            android:clickable="true"
+            android:tag="6" />
+        <ImageButton
+            android:id="@+id/ibtnIndigo"
+            android:layout_width="51.5dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:foreground="@drawable/stickman7b"
+            android:layout_marginRight="2dp"
+            android:background="@drawable/stickman7b"
+            android:clickable="true"
+            android:tag="7" />
+    </LinearLayout>
+    <ImageView
+        android:src="@android:drawable/ic_menu_gallery"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/ivEditProfile" />
 </LinearLayout>

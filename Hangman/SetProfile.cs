@@ -94,7 +94,7 @@ namespace Hangman
                     myProfiles.ProfilePic = AddWordAndName.ProfilePic;
                    // myProfiles.Name = AddWordAndName.Name;
 
-                    Db.AddItem(AddWordAndName.Name, AddWordAndName.ProfilePic );
+                    Db.AddItem( AddWordAndName.Name, AddWordAndName.ProfilePic );
 
                     StartActivity(typeof(MainActivity));
                 }
