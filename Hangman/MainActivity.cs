@@ -175,8 +175,8 @@ namespace Hangman
             {
              Toast.MakeText(this, "Well done!" +  " Score:" + counter , ToastLength.Long).Show();
               
-                string Word = tvWord.Text;
-
+               string Word = tvWord.Text;
+ 
 
                 //Had a 'do while' loop but didn't need it because it was only one word not a sentence (sigh)
                 Word = Word.Replace(" ", "");
@@ -188,6 +188,9 @@ namespace Hangman
               if (!gameWord.Contains(letter))
             {//if the letter doesn't match start buiding the gallows
                 BuildGallows();
+               
+               
+
             }
              
         }
@@ -209,7 +212,13 @@ namespace Hangman
                 IvHangman.SetBackgroundResource(GamePics[wrongGuesses]);
                 counter = 0;
                 Toast.MakeText(this, "Game over.  " + "The word was  " + new string(gameWord) + ".  Score: " + counter, ToastLength.Long).Show();
-                StartActivity(typeof(Scores));
+            
+
+
+               
+                //Add score and word to Score list
+                //objDb.addScore(counter, Word, AddWordAndName.Name, AddWordAndName.ProfilePic);
+                //StartActivity(typeof(Scores));
               
             }
            // Make a counter to score the game according to the amount of pieces of gallows have been drawn 
@@ -266,14 +275,14 @@ namespace Hangman
                 Toast.MakeText(this, "Database didn't load", ToastLength.Short).Show();
             }
         }
-        private void GenerateWord()
+        public void GenerateWord()
         {//Pick a random word to use in game
             Random rand = new Random();
             int RndNumber = rand.Next(1, WordList.Count);
             // return RndNumber between the first and however many letters there are in the list;
             Log.Info(tag, "RndNumber " + RndNumber);
             //make a tag to help with debugging
-            string Word = WordList[RndNumber];
+          string Word = WordList[RndNumber];
             //the word at whichever random number is picked
             gameWord = Word.ToCharArray();
             //convert it to an array of letters

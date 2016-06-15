@@ -193,6 +193,9 @@ namespace Hangman
 			// aapt resource value: 0x7f070027
 			public const int btnN = 2131165223;
 			
+			// aapt resource value: 0x7f070037
+			public const int btnNewPlayer = 2131165239;
+			
 			// aapt resource value: 0x7f070028
 			public const int btnO = 2131165224;
 			
@@ -240,9 +243,6 @@ namespace Hangman
 			
 			// aapt resource value: 0x7f070034
 			public const int btnZ = 2131165236;
-			
-			// aapt resource value: 0x7f070037
-			public const int button1 = 2131165239;
 			
 			// aapt resource value: 0x7f07000b
 			public const int editText1 = 2131165195;

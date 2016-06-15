@@ -26,6 +26,7 @@ namespace Hangman
         private List<Profiles> myList;
         DatabaseManager myDbManager = new DatabaseManager();
         private Button btnPlayAgain;
+        private Button btnNewPlayer;
        private int Listid;
         private string Name;
         private int ProfilePic;
@@ -44,6 +45,8 @@ namespace Hangman
             lvScores = FindViewById<ListView>(Resource.Id.lvScores);
             btnPlayAgain = FindViewById<Button>(Resource.Id.btnPlayAgain);
             btnPlayAgain.Click += btnPlayAgain_Click;
+            btnNewPlayer = FindViewById<Button>(Resource.Id.btnNewPlayer);
+            btnNewPlayer.Click += btnNewPlayer_Click;
             lvScores.ItemClick += OnListScores_Click;
             Log.Info(tag, "resource loaded");
             myList = myDbManager.ViewAll();
@@ -51,6 +54,11 @@ namespace Hangman
            
           
           
+        }
+
+        private void btnNewPlayer_Click(object sender, EventArgs e)
+        {
+            StartActivity(typeof(SetProfile));
         }
 
         private void OnListScores_Click(object sender, AdapterView.ItemClickEventArgs e)
