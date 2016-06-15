@@ -28,11 +28,9 @@ namespace Hangman
         }
 
         public List<Profiles> ViewAll()
-        {
+        {//List all of the database data in order of highest scores down - make sure scores in the database are an int not a varchar
             try
             {
-                //SQLiteConnection db = new SQLiteConnection(System.IO.Path.Combine(Android.OS.Environment.ExternalStorageDirectory.ToString(), "Scoring.sqlite"));
-
                 return db.Query<Profiles>("select Id, ProfilePic, Name, Word, Score from Profiles order by Score Desc ");
             }
             catch (Exception e)
@@ -43,7 +41,7 @@ namespace Hangman
         }
 
        public void DBConnect()
-        {
+        {//connect to the database
             try
             {
                 db =
@@ -62,7 +60,7 @@ namespace Hangman
         }
 
         public void AddItem( string Name, int ProfilePic)
-        {
+        {//Add the name and picture from Set Profiles
             Log.Info(tag, "AddItem Name = " + Name  + " AddItem ProfilePic = " + ProfilePic);
 
             try
@@ -78,7 +76,7 @@ namespace Hangman
 
                 db.Insert(AddThis);
 
-              // db.Execute("INSERT INTO Profiles(ProfilePic, Name, Word, Score)// VALUES(?1,? 2,? 3))
+              
                 Log.Info(tag, "Data Added " + AddThis);
 
             }
@@ -89,16 +87,16 @@ namespace Hangman
         }
 
       public void EditItem( string Name, string Word, int Score, int Id, int ProfilePic)
-           // public void EditItem(string Name,  int Id, int ProfilePic)
+           
         {
+            //caused me huge problems but I got there!
+            // need all the fields to go through to the final edit to ensure that even the bits not edited show again
 
             Log.Info(tag, "EditProfile Name = " + Name);
             try
             {
                 //http://stackoverflow.com/questions/14007891/how-are-sqlite-records-updated
-
-
-              //  int profilePic = 0;
+                
                 var EditThis = new Profiles
                 {
                     Id = Id,
@@ -112,8 +110,7 @@ namespace Hangman
 
                 db.Update(EditThis);
 
-                //or this
-                //  db.Execute("UPDATE scoring Set name = ?, score =, WHERE ID = ?", name, score, word, id);
+               
 
             }
             catch (Exception e)
@@ -125,7 +122,7 @@ namespace Hangman
         }
 
         public void DeleteItem(int listid)
-        {
+        {//Gone!!
             //https://developer.xamarin.com/guides/cross-platform/application_fundamentals/data/part_3_using_sqlite_orm/
             try
             {
@@ -141,13 +138,14 @@ namespace Hangman
 
        public void addScore( int Score, string Word, String Name, int ProfilePic)
        {
+            //For when the game is over to add the word and score to the database for the player who had the profile on main activity
             Log.Info(tag, " AddItem Score = " + Score, "AddItem Word = " + Word);
 
             try
             {
                 var AddScore = new Profiles
                 {
-                //Id =Id,
+                //Id =Id,   
                  Score = Score,
                  Word = Word,
                  Name = Name,

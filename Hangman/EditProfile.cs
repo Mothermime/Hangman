@@ -38,14 +38,13 @@ namespace Hangman
         private ImageButton ibtnIndigo;
 
         protected override void OnCreate(Bundle bundle)
-            {
+            {//All sorts of different requirements 
                 base.OnCreate(bundle);
                 SetContentView(Resource.Layout.EditProfile);
             txtEditName = FindViewById<EditText>(Resource.Id.txtEditName);
             ivEditProfile = FindViewById<ImageView>(Resource.Id.ivEditProfile);
                 btnUpdate = FindViewById<Button>(Resource.Id.btnUpdate);
                 btnDelete = FindViewById<Button>(Resource.Id.btnDelete);
-
                 btnUpdate.Click += OnBtnUpdateClick;
                 btnDelete.Click += OnBtnDeleteClick;
             ibtnBlue = FindViewById<ImageButton>(Resource.Id.ibtnBlue);
@@ -72,13 +71,11 @@ namespace Hangman
             Word = Intent.GetStringExtra("Word");
                 Log.Info(tag, "ListID " + ListId +  " Name " + Name + " ProfilePic " + ProfilePic);
             txtEditName.Text = Name;
-             //  ivEditProfile.Selected.ToString() = ProfilePic.ToString();
-                
-
-                adjDb = new DatabaseManager();
+             
+                adjDb = new DatabaseManager();//adj = adjusted
            }
             private void AllColors_Click(object sender, EventArgs e)
-            {
+            {//same as for SetProfile view - send picture of button chow=sen to an image view
                 ImageButton fakeButton = (ImageButton) sender;
                 ivEditProfile.SetImageResource(AddWordAndName.AssignProfilePic(fakeButton.Tag.ToString()));
 
@@ -86,10 +83,10 @@ namespace Hangman
         private void OnBtnUpdateClick(object sender, EventArgs e)
         {
             try
-            {
+            {//List all fields and make sure they are the same as in the Database class parameters
+
                 adjDb.EditItem(txtEditName.Text, Word, Score, ListId, AddWordAndName.ProfilePic);
-                     // adjDb.EditItem(txtEditName.Text,  ListId, AddWordAndName.ProfilePic);
-                //         adjDb.EditItem("aaa", 1, 45678);
+                  
                 Toast.MakeText(this,"Name edited", ToastLength.Short).Show();
                 this.Finish();
                 StartActivity(typeof(Scores));
@@ -102,11 +99,13 @@ namespace Hangman
         }
         private void OnBtnDeleteClick(object sender, EventArgs e)
             {
+            //Get rid of entire entry at the Id listed
                 try
                 {
                    adjDb.DeleteItem(ListId);
                     Toast.MakeText(this, "Player Deleted", ToastLength.Long).Show();
                     this.Finish();
+                //then go back to the Scores view
                     StartActivity(typeof(Scores));
                 }
                 catch (Exception ex)

@@ -23,26 +23,30 @@ namespace Hangman
             this.context = context;
             this.items = items;
         }
-
+        //Coming from underlying interface
         public override Profiles this[int position]
         {
+            //reading the positions of the fields
             get { return items[position]; }
 
         }
 
         public override int Count
         {
+            //counting how many fields
             get { return items.Count; }
 
         }
 
         public override long GetItemId(int position)
         {
+            //Id of positions
             return position;
         }
+        //Don't touch
 
         public override View GetView(int position, View convertView, ViewGroup parent)
-        {
+        {//Identify where the information is coming from to go to the List
             var item = items[position];
             var view = convertView;
             if (view == null) // no view to re-use, create new       
@@ -53,13 +57,6 @@ namespace Hangman
           
            view.FindViewById<ImageView>(Resource.Id.ivScoreProfile).SetImageResource(item.ProfilePic);
 
-            //     int num = AddWordAndName.ProfilePic;
-            //    ImageView image = (ImageView)num;
-
-           
-
-            //view.FindViewById<ImageView>(Resource.Id.ivScoreProfile).Id = item.ProfilePic;
-            //view.FindViewById<ImageView>(Resource.Id.ivScoreProfile).Id = AddWordAndName.ProfilePic;
             return view;
         }
     } 

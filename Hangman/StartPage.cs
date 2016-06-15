@@ -32,7 +32,7 @@ namespace Hangman
         private void btnStart_Click(object sender, EventArgs e)
         {
            StartActivity(typeof(SetProfile));
-            //when the button is clicked it starts the page identified
+            //when the button is clicked it starts the page identified ie SetProfile view
         }
     }
 }

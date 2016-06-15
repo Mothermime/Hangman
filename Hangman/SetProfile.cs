@@ -48,11 +48,12 @@ namespace Hangman
             ibtnIndigo = FindViewById<ImageButton>(Resource.Id.ibtnIndigo);
             btnPlay = FindViewById<Button>(Resource.Id.btnPlay);
             ivProfile = FindViewById<ImageView>(Resource.Id.ivProfile);
-         // ivProfile.Drawable = myProfiles.ProfilePic;
+
             txtName = FindViewById<EditText>(Resource.Id.txtName);
             txtName.Text = myProfiles.Name; 
             btnPlay.Click += btnPlay_Click;
 
+            //Assign all imageview buttons to one click event
             ibtnBlue.Click += AllColors_Click;
             ibtnPink.Click += AllColors_Click;
             ibtnGreen.Click += AllColors_Click;
@@ -65,41 +66,32 @@ namespace Hangman
        
         private void AllColors_Click(object sender, EventArgs e)
         {
+            //Send whichever picture clicked on to the image view
             ImageButton fakeButton =  (ImageButton) sender;
             ivProfile.SetImageResource(AddWordAndName.AssignProfilePic(fakeButton.Tag.ToString()));
            
-
-            //  SetProfileImage((string)fakeButton.Tag);
-
-            //var PainInTheNeck = (short) Convert.ToInt32(fakeButton.Tag);
-
-            // SelectedPicture = PainInTheNeck; // Convert.ToInt32(fakeButton.Tag);
-            // AddWordAndName.AssignProfilePic((string) fakeButton.Tag);
-          // SelectedPicture = (AddWordAndName.ProfilePic);
-           // myProfiles.ProfilePic = AddWordAndName.ProfilePic;
-
         }
 
         private void btnPlay_Click(object sender, EventArgs e)
         {
             Log.Info(tag, "On btnPlayClick");
-            string Result;
-           
+          
             {
                 if  (txtName.Text != "" && ivProfile.Drawable != null)
                 {
+                 //As long as both name and a profile picture have something in them
                     myProfiles.Name = txtName.Text;
-                    // AddWordAndName.ProfilePic = SelectedPicture;
                    AddWordAndName.Name = myProfiles.Name;
                     myProfiles.ProfilePic = AddWordAndName.ProfilePic;
-                   // myProfiles.Name = AddWordAndName.Name;
-
+                  
+                    //Add to database
                     Db.AddItem( AddWordAndName.Name, AddWordAndName.ProfilePic );
 
+                    //the start the game
                     StartActivity(typeof(MainActivity));
                 }
                 if (txtName.Text == "" || ivProfile.Drawable == null)
-                {
+                {//If either or both are empty get a message to request those and don't start game
                     Toast.MakeText(this, "Please enter your name and select a profile picture.", ToastLength.Long).Show();
 
                     }

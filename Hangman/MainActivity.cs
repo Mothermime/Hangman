@@ -64,10 +64,7 @@ namespace Hangman
         Profiles myProfiles = new Profiles();
         DatabaseManager objDb = new DatabaseManager();
         SetProfile mySetProfile = new SetProfile();
-        // private char guessedletter;
-
-        // private string[] solveword;
-        //int LengthOfArray = wordsolve.Length;
+        
         private int[] GamePics =
         {
             Resource.Drawable.Blackboard1, Resource.Drawable.Blackboard2,
@@ -163,26 +160,33 @@ namespace Hangman
             // no matter which button is pressed it will apply 
 
             Button fakeButton = (Button) sender;
-
+           
+             //Make sure all letters are lower case to avoid errors of reading words
             letter = Convert.ToChar(fakeButton.Text.ToLower());
+
+            //Remove the ability to press the button again
             fakeButton.Enabled = false;
+
+            //Call the method to display any correct letters
             DisplayWord();
+
             Button choice = sender as Button;
            if (!GameBlank.Contains('_'))
             {
              Toast.MakeText(this, "Well done!" +  " Score:" + counter , ToastLength.Long).Show();
-               // myProfiles.Score = counter;
+              
                 string Word = tvWord.Text;
-                //myProfiles.Word = Word;
-                
-                //didn't need  a 'do while' loop because it was only one word not a sentence (sigh)
-                    Word = Word.Replace(" ", "");
 
+
+                //Had a 'do while' loop but didn't need it because it was only one word not a sentence (sigh)
+                Word = Word.Replace(" ", "");
+
+                //Add score and word to Score list
            objDb.addScore( counter, Word, AddWordAndName.Name, AddWordAndName.ProfilePic);
                 StartActivity(typeof(Scores));
             }
               if (!gameWord.Contains(letter))
-            {
+            {//if the letter doesn't match start buiding the gallows
                 BuildGallows();
             }
              
@@ -208,13 +212,10 @@ namespace Hangman
                 StartActivity(typeof(Scores));
               
             }
-           
+           // Make a counter to score the game according to the amount of pieces of gallows have been drawn 
             myProfiles.Score = counter;
             
-            //for (int i = 13; i >= 0; i--)
-            //{
-          // myProfiles.Score = counter;
-            // }
+          
         }
 
       
