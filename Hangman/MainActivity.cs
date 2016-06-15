@@ -173,14 +173,13 @@ namespace Hangman
             Button choice = sender as Button;
            if (!GameBlank.Contains('_'))
             {
-             Toast.MakeText(this, "Well done!" +  " Score:" + counter , ToastLength.Long).Show();
-              
                string Word = tvWord.Text;
- 
-
                 //Had a 'do while' loop but didn't need it because it was only one word not a sentence (sigh)
                 Word = Word.Replace(" ", "");
-
+                //Add the value of the word to the counter
+               counter = counter + LetterScores.WordScore(Word);
+                //Put the toast message here so that it reads the new counter rather than aboove where it only read the one without the word score
+                Toast.MakeText(this, "Well done!" +  " Score:" + counter , ToastLength.Long).Show();
                 //Add score and word to Score list
            objDb.addScore( counter, Word, AddWordAndName.Name, AddWordAndName.ProfilePic);
                 StartActivity(typeof(Scores));
@@ -188,9 +187,6 @@ namespace Hangman
               if (!gameWord.Contains(letter))
             {//if the letter doesn't match start buiding the gallows
                 BuildGallows();
-               
-               
-
             }
              
         }

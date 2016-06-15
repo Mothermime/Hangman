@@ -63,6 +63,7 @@
     <Compile Include="DatabaseManager.cs" />
     <Compile Include="EditProfile.cs" />
     <Compile Include="IDataAdapter.cs" />
+    <Compile Include="LetterScores.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Profiles.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
