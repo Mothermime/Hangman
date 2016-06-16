@@ -178,7 +178,7 @@ namespace Hangman
                 Word = Word.Replace(" ", "");
                 //Add the value of the word to the counter
                counter = counter + LetterScores.WordScore(Word);
-                //Put the toast message here so that it reads the new counter rather than aboove where it only read the one without the word score
+                //Put the toast message here so that it reads the new counter rather than above where it only read the one without the word score
                 Toast.MakeText(this, "Well done!" +  " Score:" + counter , ToastLength.Long).Show();
                 //Add score and word to Score list
            objDb.addScore( counter, Word, AddWordAndName.Name, AddWordAndName.ProfilePic);
@@ -187,6 +187,7 @@ namespace Hangman
               if (!gameWord.Contains(letter))
             {//if the letter doesn't match start buiding the gallows
                 BuildGallows();
+                
             }
              
         }
@@ -207,14 +208,10 @@ namespace Hangman
             {//put up the last picture and display a message to say the game is over
                 IvHangman.SetBackgroundResource(GamePics[wrongGuesses]);
                 counter = 0;
+                //message to show what the word was
                 Toast.MakeText(this, "Game over.  " + "The word was  " + new string(gameWord) + ".  Score: " + counter, ToastLength.Long).Show();
             
-
-
-               
-                //Add score and word to Score list
-                //objDb.addScore(counter, Word, AddWordAndName.Name, AddWordAndName.ProfilePic);
-                //StartActivity(typeof(Scores));
+                StartActivity(typeof(Scores));
               
             }
            // Make a counter to score the game according to the amount of pieces of gallows have been drawn 

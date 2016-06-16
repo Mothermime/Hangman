@@ -12,7 +12,7 @@ using Android.Widget;
 
 namespace Hangman
 {
-    [Activity(Label = "StartPage", MainLauncher = true, Theme = "@style/Theme.Custom")]
+    [Activity(Label = "Hangman", MainLauncher = true, Theme = "@style/Theme.Custom")]
     public class StartPage : Activity
     {//declare variable
         private Button btnStart;
