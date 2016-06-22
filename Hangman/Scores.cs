@@ -58,7 +58,7 @@ namespace Hangman
 
         private void btnNewPlayer_Click(object sender, EventArgs e)
         {
-            StartActivity(typeof(SetProfile));
+            StartActivity(typeof(StartPage));
         }
 
         private void OnListScores_Click(object sender, AdapterView.ItemClickEventArgs e)
